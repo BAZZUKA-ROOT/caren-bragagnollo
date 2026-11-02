@@ -3,377 +3,414 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
 <title>Caren Bragagnollo · Estética Facial em Guaíra</title>
 <meta name="description" content="Estética facial com a Caren Bragagnollo em Guaíra/PR: design de sobrancelhas, limpeza de pele e cuidados para o rosto. Veja os procedimentos e agende seu horário online.">
-<meta name="theme-color" content="#B46263">
+<meta name="theme-color" content="#FFFFFF">
 <meta property="og:title" content="Caren Bragagnollo · Estética Facial">
 <meta property="og:description" content="A riqueza da sua própria beleza lapidada na melhor versão. Agende seu horário online.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <link rel="icon" id="favicon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://esxdjbuhnxuayblysfpj.supabase.co">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Questrial&display=swap">
 <style>
-/* Layout: hero com arco e cartão de horários, procedimentos por categoria, agendamento em 3 passos, portal para cliente e para a Caren. */
+/* Caren Bragagnollo · site público, pensado primeiro para o celular. Só tema claro. */
 :root{
-  --rose:#B46263; --rose-2:#BD8C7D; --nude:#C8AE99; --paper:#F6F6F6;
-  --bg:#F6F6F6; --surface:#FFFFFF; --surface-2:#F1EBE6; --fg:#1A1516; --muted:#6A5B58; --line:#E6DCD4;
-  --brand:#A85859; --brand-fg:#FFFFFF; --brand-soft:#F1E3E3; --accent:#8E5F51; --accent-soft:#F1E6E0;
-  --ok:#25704F; --ok-soft:#DDF1E6; --warn:#7A5A1E; --warn-soft:#F6EBD0; --bad:#B0352A; --bad-soft:#F9E0DD;
-  --shadow:0 18px 44px -22px rgba(140,70,70,.38);
+  --rose:#B46263;--brand:#A85859;--brand-d:#8F4849;--brand-soft:#F7ECEB;--brand-fg:#FFFFFF;
+  --rose-2:#BD8C7D;--nude:#C8AE99;--nude-soft:#F5EEE8;
+  --bg:#FFFFFF;--tint:#FBF6F3;--surface:#FFFFFF;--surface-2:#F6EFEB;
+  --fg:#2B2021;--muted:#6E5E5B;--line:#EEE5E0;--line-2:#E2D5CE;
+  --accent:#8E5F51;--accent-soft:#F4EAE4;
+  --ok:#2E7A55;--ok-soft:#E3F2EA;--warn:#8A6418;--warn-soft:#FBF0D9;--bad:#B23A30;--bad-soft:#FBE7E4;
   --font-display:'Cormorant Garamond',Georgia,'Times New Roman',serif;
   --font-body:'Questrial',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --shadow-sm:0 1px 2px rgba(70,35,35,.05),0 4px 14px -6px rgba(70,35,35,.12);
+  --shadow:0 18px 40px -18px rgba(120,50,52,.38);
+  --tab-h:64px;
+  color-scheme:light;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#181213; --surface:#221A1B; --surface-2:#2C2122; --fg:#F6F1EE; --muted:#BFAAA4; --line:#42312F;
-  --brand:#D98B8C; --brand-fg:#2A1011; --brand-soft:#4A2B2C; --accent:#D2AE9B; --accent-soft:#382B26;
-  --ok:#59C795; --ok-soft:#143527; --warn:#E6B85C; --warn-soft:#3A2F14; --bad:#F08A7E; --bad-soft:#3F1D19;
-  --shadow:0 18px 44px -22px rgba(0,0,0,.75); color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#181213; --surface:#221A1B; --surface-2:#2C2122; --fg:#F6F1EE; --muted:#BFAAA4; --line:#42312F;
-  --brand:#D98B8C; --brand-fg:#2A1011; --brand-soft:#4A2B2C; --accent:#D2AE9B; --accent-soft:#382B26;
-  --ok:#59C795; --ok-soft:#143527; --warn:#E6B85C; --warn-soft:#3A2F14; --bad:#F08A7E; --bad-soft:#3F1D19;
-  --shadow:0 18px 44px -22px rgba(0,0,0,.75); color-scheme:dark}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:120px}
-body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--surface)}
-h1,h2,h3,h4{margin:0;font-weight:500;text-wrap:balance}
-h1,h2{font-family:var(--font-display);font-weight:500;letter-spacing:-.005em;line-height:1.05}
-h2{font-size:clamp(2rem,5vw,2.9rem)}
-h3{font-weight:600;font-size:1.05rem}
-p{margin:0}
-a{color:var(--brand)}
-button,input,select,textarea{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
-.wrap{width:100%;max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.ic{flex:none;vertical-align:-3px}
-.muted{color:var(--muted)}
-.small{font-size:.875rem}
-.tnum{font-variant-numeric:tabular-nums}
-.eyebrow{font-size:.76rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 var(--font-body);font-synthesis:none;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+img{max-width:100%;display:block}
+a{color:var(--brand);text-underline-offset:3px}
+h1,h2,h3,h4{margin:0;font-family:var(--font-display);font-weight:600;line-height:1.12;letter-spacing:-.005em;text-wrap:balance;color:var(--fg)}
+p,ul,ol{margin:0}
+b,strong{font-family:var(--font-display);font-weight:700;font-size:1.06em}
+h1,h2,h3,h4,b,strong,.price,.how-n,.quote{font-variant-numeric:lining-nums}
+::selection{background:var(--brand-soft);color:var(--fg)}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:8px}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.wrap.narrow{max-width:760px}
+.muted{color:var(--muted)}.small{font-size:.875rem}.tnum{font-variant-numeric:tabular-nums}
+.ic{flex:none;display:block}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+[hidden]{display:none!important}
+.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--brand);color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none}
+.skip:focus{top:calc(10px + env(safe-area-inset-top,0px))}
+.art{display:block;background:currentColor;-webkit-mask:var(--img) center/contain no-repeat;mask:var(--img) center/contain no-repeat}
 
-.demo-bar{background:var(--fg);color:var(--bg);font-size:.8rem;padding-block:6px}
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
-.top .wrap{display:grid;grid-template-columns:1fr auto;align-items:center;gap:6px 12px;padding-block:10px}
-.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--fg);min-width:0}
-.brand b{font-family:var(--font-display);font-weight:600;font-size:1.6rem;line-height:1}
-.brand small{display:block;font-size:.68rem;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
-.nav{grid-column:1/-1;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
-.nav a{white-space:nowrap;text-decoration:none;color:var(--muted);padding:6px 12px;border-radius:99px;font-weight:500;font-size:.92rem}
-.nav a:hover{background:var(--surface-2);color:var(--fg)}
-.top-actions{display:flex;gap:8px;align-items:center}
-@media (min-width:880px){.top .wrap{grid-template-columns:auto 1fr auto}.nav{grid-column:auto;justify-content:center}}
-
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg);padding:10px 18px;border-radius:99px;font-weight:500;cursor:pointer;text-decoration:none;line-height:1.2;min-height:44px}
+/* botões e formulários (usados também no painel) */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:11px 22px;border-radius:999px;border:1px solid var(--line-2);background:var(--surface);color:var(--fg);font:inherit;font-size:1rem;line-height:1.2;text-decoration:none;text-align:center;cursor:pointer;transition:background .15s,border-color .15s,color .15s,transform .1s}
 .btn:hover{border-color:var(--brand)}
-.btn.primary{background:var(--brand);border-color:var(--brand);color:var(--brand-fg)}
-.btn.primary:hover{filter:brightness(1.08)}
-.btn.danger{color:var(--bad);border-color:var(--bad)}
-.btn.sm{padding:6px 14px;min-height:36px;font-size:.88rem}
-.icon-btn{width:44px;height:44px;padding:0}
-
-.sec{padding-block:clamp(44px,8vw,84px)}
-.sec.alt{background:var(--surface-2)}
-.sec-head{display:grid;gap:10px;margin-bottom:30px;max-width:58ch}
-.sec-head p{color:var(--muted)}
-.grid{display:grid;gap:14px}
-.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
-.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;min-width:0}
-
-.hero{padding-block:clamp(32px,6vw,72px) clamp(40px,6vw,72px)}
-.hero .wrap{display:grid;gap:34px;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));align-items:center}
-.hero h1{font-size:clamp(2.8rem,9vw,5rem);margin:14px 0 18px}
-.hero h1 em{color:var(--brand)}
-.hero .lead{font-size:1.1rem;color:var(--muted);max-width:44ch}
-.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-.facts{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:24px;font-size:.9rem;color:var(--muted)}
-.facts span{display:inline-flex;gap:6px;align-items:center}
-.visual{max-width:420px;width:100%;margin-inline:auto}
-.arch{aspect-ratio:4/4.6;border-radius:999px 999px 28px 28px;background:linear-gradient(165deg,var(--brand-soft),var(--surface-2));display:grid;place-items:center;position:relative;overflow:hidden}
-.arch::before,.arch::after{content:"";position:absolute;border-radius:50%;border:1px solid var(--line)}
-.arch::before{width:78%;aspect-ratio:1;top:14%}
-.arch::after{width:52%;aspect-ratio:1;top:27%;border-color:var(--brand);opacity:.35}
-.arch b{font-family:var(--font-display);font-weight:500;font-size:clamp(6rem,22vw,9rem);color:var(--brand);line-height:1;position:relative;z-index:1;margin-top:-30px}
-.arch span{position:absolute;bottom:68px;left:0;right:0;text-align:center;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.now{margin:-60px 14px 0;position:relative;z-index:2;box-shadow:var(--shadow);display:grid;gap:10px}
-.now h3{display:flex;align-items:center;gap:8px;font-size:.95rem}
-.dot{width:9px;height:9px;border-radius:50%;background:var(--ok);display:inline-block;box-shadow:0 0 0 4px var(--ok-soft)}
-.slot-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:10px;border-top:1px solid var(--line)}
-.slot-row b{font-variant-numeric:tabular-nums}
-
-.tag{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:3px 10px;border-radius:99px;align-self:flex-start}
-.svc{display:flex;flex-direction:column;gap:6px}
-.svc h3{font-family:var(--font-display);font-size:1.55rem;font-weight:600;line-height:1.1;margin-top:6px}
-.svc .meta{display:flex;gap:6px 14px;color:var(--muted);font-size:.9rem}
-.svc-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto;padding-top:12px}
-.price{font-weight:600;font-size:1.1rem}
-.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
-.chip{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:6px 16px;font-weight:500;font-size:.9rem;cursor:pointer;min-height:38px}
-.chip[aria-pressed="true"]{background:var(--brand);color:var(--brand-fg);border-color:var(--brand)}
-
-.about{display:grid;gap:32px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));align-items:start}
-.about p.big{font-family:var(--font-display);font-size:clamp(1.5rem,3.4vw,2rem);line-height:1.25;font-weight:500}
-.pillars{display:grid;gap:14px}
-.pillar{display:flex;gap:14px;align-items:flex-start}
-.pillar .ic{color:var(--brand);margin-top:3px}
-.steps-flow{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));counter-reset:s;padding:0;margin:0}
-.steps-flow li{list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;counter-increment:s}
-.steps-flow li::before{content:counter(s);font-family:var(--font-display);font-size:2.2rem;color:var(--accent);line-height:1;display:block;margin-bottom:8px}
-
-.book{background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
-.stepper{display:flex;overflow-x:auto;border-bottom:1px solid var(--line);background:var(--surface-2)}
-.stepper div{flex:1 0 auto;padding:12px 18px;font-size:.88rem;font-weight:500;color:var(--muted);white-space:nowrap;display:flex;gap:8px;align-items:center}
-.stepper div b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--line);font-size:.75rem;color:var(--fg)}
-.stepper .on{color:var(--fg)}
-.stepper .on b{background:var(--brand);color:var(--brand-fg)}
-.stepper .done b{background:var(--ok);color:#fff}
-.book-body{padding:clamp(16px,3vw,30px);display:grid;gap:18px}
-.opts{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
-.opt{text-align:left;border:1.5px solid var(--line);background:var(--surface);border-radius:14px;padding:14px;cursor:pointer;display:grid;gap:3px}
-.opt:hover{border-color:var(--brand)}
-.opt[aria-pressed="true"]{border-color:var(--brand);background:var(--brand-soft)}
-.group-title{font-size:.76rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:-6px}
-.dates{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px}
-.date{flex:0 0 auto;min-width:64px;border:1.5px solid var(--line);background:var(--surface);border-radius:14px;padding:8px 6px;display:grid;justify-items:center;cursor:pointer;line-height:1.2}
-.date small{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
-.date b{font-size:1.3rem;font-variant-numeric:tabular-nums;font-weight:600}
-.date[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:var(--brand-fg)}
-.date[aria-pressed="true"] small{color:inherit}
-.date[disabled]{opacity:.4;cursor:not-allowed;background:var(--surface-2)}
-.times{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px}
-.time{border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 6px;font-weight:500;font-variant-numeric:tabular-nums;cursor:pointer;min-height:44px}
-.time:hover{border-color:var(--brand)}
-.time[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:var(--brand-fg)}
-.field{display:grid;gap:5px;min-width:0}
-.field label,.lbl{font-size:.85rem;font-weight:500;color:var(--muted)}
-.input{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;min-height:44px}
-.input:focus{border-color:var(--brand)}
-textarea.input{min-height:84px;resize:vertical}
-.form{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
-.form .full{grid-column:1/-1}
-.check{display:flex;gap:10px;align-items:flex-start;font-size:.92rem}
-.check input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--brand)}
-.summary{background:var(--surface-2);border-radius:14px;padding:14px 16px;display:grid;gap:6px;font-size:.95rem}
-.summary div{display:flex;gap:8px;align-items:center}
-.nav-row{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.banner{border-radius:12px;padding:10px 14px;background:var(--accent-soft);color:var(--warn);font-weight:500;font-size:.92rem}
-.ok-box{text-align:center;display:grid;gap:12px;justify-items:center;padding-block:10px}
-.ok-box .tick{width:56px;height:56px;border-radius:50%;background:var(--ok-soft);color:var(--ok);display:grid;place-items:center}
-.code{font-family:var(--font-display);font-size:2.4rem;letter-spacing:.1em;color:var(--brand);font-weight:600}
-.err{color:var(--bad);font-size:.88rem;font-weight:500}
-.prep{background:var(--accent-soft);border-radius:12px;padding:12px 14px;font-size:.92rem;text-align:left;width:min(100%,420px);color:var(--fg)}
-
-.seg{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:4px;gap:2px;flex-wrap:wrap;margin-bottom:22px}
-.seg button{border:0;background:none;border-radius:99px;padding:9px 20px;font-weight:500;cursor:pointer;color:var(--muted);min-height:40px}
-.seg button[aria-pressed="true"]{background:var(--brand);color:var(--brand-fg)}
-.subtabs{display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--line);margin-bottom:18px}
-.subtabs button{border:0;background:none;padding:10px 14px;font-weight:500;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;min-height:44px}
-.subtabs button[aria-pressed="true"]{color:var(--brand);border-bottom-color:var(--brand)}
-.tools{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;align-items:center}
-.kpis{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));margin-bottom:18px}
-.kpi b{display:block;font-family:var(--font-display);font-size:2.5rem;line-height:1.05;font-weight:600;font-variant-numeric:tabular-nums;color:var(--brand)}
-.kpi span{color:var(--muted);font-size:.88rem}
-.chart{width:100%;height:auto;display:block}
-.chart .bar{fill:var(--brand)}
-.chart .bar.today{fill:var(--accent)}
-.chart .axis{stroke:var(--line);stroke-width:1;fill:none}
-.chart text{fill:var(--muted);font-size:10px;font-family:var(--font-body)}
-.chart text.v{fill:var(--fg);font-weight:600}
-.rows{display:grid;gap:10px}
-.row{display:grid;gap:10px 14px;grid-template-columns:auto 1fr;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
-.row .when{font-variant-numeric:tabular-nums;font-weight:600;text-align:center;line-height:1.15;min-width:58px}
-.row .when small{display:block;font-weight:400;color:var(--muted);font-size:.74rem}
-.row .info{min-width:0}
-.row .info b{display:block;overflow-wrap:anywhere;font-weight:600}
-.row .acts{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.st{display:inline-block;font-size:.74rem;font-weight:600;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.btn:active{transform:scale(.98)}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.primary:hover{background:var(--brand-d);border-color:var(--brand-d)}
+.btn.block{width:100%}
+.btn.sm{min-height:38px;padding:7px 16px;font-size:.92rem}
+.btn.icon-btn{width:44px;min-height:44px;padding:0}
+.btn.danger{background:var(--bad);border-color:var(--bad);color:#fff}
+.btn.danger-out{color:var(--bad);border-color:#EBC9C4}
+.btn.light{background:#fff;border-color:#fff;color:var(--brand)}
+.btn.wa{background:#fff;color:var(--ok);border-color:#BFE0CE}
+.btn.wa:hover{background:var(--ok-soft);border-color:var(--ok)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.linkbtn{background:none;border:0;padding:0;color:var(--brand);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font:inherit}
+.field{display:grid;gap:6px;min-width:0}
+.field label,.lbl{font-size:.88rem;color:var(--muted)}
+.opt-lbl{color:var(--muted);font-size:.82rem}
+.input{width:100%;min-height:50px;padding:12px 14px;border:1px solid var(--line-2);border-radius:12px;background:#fff;font:inherit;font-size:16px;color:var(--fg);appearance:none}
+select.input{background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236E5E5B' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") right 12px center/18px no-repeat;padding-right:40px}
+.input:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft)}
+.input::placeholder{color:#A8999A}
+textarea.input{min-height:100px;resize:vertical;line-height:1.5}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:.95rem;cursor:pointer;line-height:1.45}
+.check input{width:22px;height:22px;accent-color:var(--brand);margin:0;flex:none}
+.err{color:var(--bad);font-size:.92rem;background:var(--bad-soft);padding:10px 14px;border-radius:12px}
+.st{display:inline-block;font-size:.76rem;padding:3px 10px;border-radius:99px;white-space:nowrap;line-height:1.5}
 .st-agendada{background:var(--surface-2);color:var(--muted)}
 .st-confirmada{background:var(--brand-soft);color:var(--brand)}
 .st-aguardando{background:var(--warn-soft);color:var(--warn)}
 .st-atendimento{background:var(--ok-soft);color:var(--ok)}
 .st-concluida{background:var(--surface-2);color:var(--ok)}
-.st-cancelada{background:var(--bad-soft);color:var(--bad)}
-.pbadge{background:var(--accent);color:var(--surface);font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:6px;letter-spacing:.06em;margin-left:6px;text-transform:uppercase}
-.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
-table{border-collapse:collapse;width:100%;min-width:640px;font-size:.92rem}
-th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
-th{font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);background:var(--surface-2);font-weight:600}
-tr:last-child td{border-bottom:0}
-.empty{border:1.5px dashed var(--line);border-radius:14px;padding:22px;text-align:center;color:var(--muted)}
+.st-falta,.st-cancelada{background:var(--bad-soft);color:var(--bad)}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -20px 18px;padding:2px 20px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line-2);background:#fff;border-radius:99px;padding:8px 16px;min-height:40px;font:inherit;font-size:.92rem;color:var(--fg);cursor:pointer;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
+.times{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:8px}
+.time{min-height:48px;border:1px solid var(--line-2);background:#fff;border-radius:12px;font:inherit;font-size:1rem;font-variant-numeric:tabular-nums;color:var(--fg);cursor:pointer}
+.time:hover{border-color:var(--brand)}
+.time[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
+.empty{border:1.5px dashed var(--line-2);border-radius:16px;padding:22px;text-align:center;color:var(--muted);display:grid;gap:12px;justify-items:center}
 .days-pick{display:flex;gap:6px;flex-wrap:wrap}
-.days-pick label{display:flex;align-items:center;gap:4px;border:1px solid var(--line);border-radius:99px;padding:6px 12px;font-weight:500;font-size:.88rem;cursor:pointer;background:var(--surface)}
+.days-pick label{display:flex;align-items:center;gap:6px;border:1px solid var(--line-2);border-radius:99px;padding:7px 12px;font-size:.9rem;cursor:pointer;background:#fff}
 .days-pick input{accent-color:var(--brand)}
-details.note summary,details.faq summary{cursor:pointer;font-weight:500}
-details.note summary{color:var(--brand);font-size:.9rem}
-details.faq{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
-details.faq summary{font-size:1.02rem}
-details.faq p{margin-top:8px;color:var(--muted)}
-.faqs{display:grid;gap:10px;max-width:760px}
-
-.contact{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
-.info-list{display:grid;gap:14px}
-.info-list div{display:flex;gap:12px;align-items:flex-start}
-.info-list .ic{color:var(--brand);margin-top:3px}
-.foot{padding-block:28px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
-.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px}
-#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--fg);color:var(--bg);padding:12px 18px;border-radius:14px;font-weight:500;opacity:0;pointer-events:none;transition:.25s;z-index:50;max-width:calc(100vw - 32px);text-align:center}
+.subtabs{display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--line);margin-bottom:18px;scrollbar-width:none}
+.subtabs button{border:0;background:none;padding:10px 14px;font:inherit;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;min-height:44px}
+.subtabs button[aria-pressed="true"]{color:var(--brand);border-bottom-color:var(--brand)}
+#toast{position:fixed;left:50%;bottom:calc(var(--tab-h) + 16px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--fg);color:#fff;padding:12px 18px;border-radius:14px;opacity:0;pointer-events:none;transition:.25s;z-index:90;max-width:min(92vw,440px);text-align:center;font-size:.95rem}
 #toast.show{opacity:1;transform:translate(-50%,0)}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
-@media (min-width:640px){.row{grid-template-columns:auto 1fr auto}.row .acts{grid-column:auto;justify-content:flex-end}}
 
-/* ===== refinamentos v3 ===== */
-.brand b{white-space:nowrap}
-.stepper{scrollbar-width:none}
-.stepper::-webkit-scrollbar{display:none}
-@media (max-width:719px){
-  .brand .wm{font-size:.92rem;letter-spacing:.1em}
-  .top-actions .btn.primary{display:none}
-  .top .wrap{padding-block:8px}
-  .stepper div{padding:12px 10px;font-size:.8rem;gap:6px}
-  .stepper div b{width:20px;height:20px;font-size:.7rem}
-  .hero{padding-top:28px}
-  .f1{top:22px}.f2{top:92px}
-}
-.svc .price{white-space:nowrap;font-size:1.5rem}
-.svc-foot{flex-wrap:wrap}
-.jr-foot{flex-direction:column;align-items:stretch}
-.jr-foot .btn{width:100%}
-.opts{grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
-.chart{max-width:560px}
-.card.kpi{display:grid;gap:2px}
-.eyebrow{display:inline-flex;align-items:center;gap:10px}
-.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
-.hero{background:radial-gradient(60% 55% at 88% 8%,var(--brand-soft),transparent 70%),radial-gradient(40% 40% at 0% 100%,var(--accent-soft),transparent 70%)}
-.hero h1{font-size:clamp(2.6rem,7.4vw,4.5rem)}
-.visual-wrap{position:relative}
-.arch::before,.arch::after{display:none}
-.arch{background:linear-gradient(170deg,var(--brand-soft) 0%,var(--surface-2) 70%);box-shadow:inset 0 0 0 1px var(--line)}
-.arch svg{position:absolute;inset:0;width:100%;height:100%}
-.arch img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.float{position:absolute;z-index:3;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:8px 14px;font-size:.82rem;font-weight:500;display:flex;gap:8px;align-items:center;box-shadow:var(--shadow)}
-.f1{top:34px;left:6px}.f2{top:112px;right:6px}
-.float .dot{box-shadow:none}
-.strip{background:var(--brand);color:var(--brand-fg);padding-block:14px}
-.strip .wrap{display:flex;gap:6px 22px;flex-wrap:wrap;justify-content:center;font-family:var(--font-display);font-size:1.3rem;font-style:italic}
-.strip i{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.55;align-self:center}
-.card.svc{transition:transform .2s,box-shadow .2s;overflow:hidden}
-.card.svc:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-.svc-band{display:flex;align-items:center;justify-content:space-between;background:var(--brand-soft);color:var(--brand);margin:-20px -20px 8px;padding:16px 20px}
-.svc-band .tag{background:var(--surface)}
-.svc .price{font-family:var(--font-display);font-size:1.7rem;font-weight:600;color:var(--brand);line-height:1}
-.jr{display:flex;flex-direction:column;gap:12px}
-.jr-top{display:flex;gap:12px;align-items:center}
-.jr-ic{width:46px;height:46px;border-radius:50%;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;flex:none}
-.jr h3{font-family:var(--font-display);font-size:1.6rem;font-weight:600;line-height:1.05}
-.jr ol{list-style:none;margin:0;padding:0;display:grid}
-.jr li{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:.93rem}
-.jr li span:last-child{color:var(--muted);white-space:nowrap}
-.jr-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding-top:6px}
-.about p.big{font-size:clamp(1.6rem,3.6vw,2.3rem)}
-.pillar .ic{background:var(--brand-soft);padding:9px;border-radius:50%;width:40px;height:40px;margin-top:0}
-.opt{display:flex;gap:12px;align-items:center}
-.opt-ic{width:40px;height:40px;border-radius:12px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;flex:none}
-.opt[aria-pressed="true"] .opt-ic{background:var(--brand);color:var(--brand-fg)}
-.slot-grp{display:grid;gap:8px}
-details.faq summary{list-style:none;display:flex;justify-content:space-between;gap:14px;align-items:center}
-details.faq summary::-webkit-details-marker{display:none}
-details.faq summary::after{content:"+";font-size:1.5rem;line-height:1;color:var(--brand);transition:transform .2s}
-details.faq[open] summary::after{transform:rotate(45deg)}
-.foot{background:var(--surface);padding-block:44px 28px}
-.foot .wrap{display:block}
-.foot-grid{display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));margin-bottom:28px}
-.foot h4{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px}
-.foot .fname{font-family:var(--font-display);font-size:1.7rem;font-weight:600;color:var(--fg);line-height:1;margin-bottom:8px}
-.foot-bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;border-top:1px solid var(--line);padding-top:18px;font-size:.82rem}
-.mbar{display:none}
-@media (max-width:719px){
-  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:25;gap:8px;padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:var(--surface);border-top:1px solid var(--line)}
-  .mbar .btn{flex:1}
-  body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
-  #toast{bottom:calc(86px + env(safe-area-inset-bottom,0px))}
-}
+/* topo */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:31;background:#fff}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.top-in{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg);min-width:0}
+.mk{width:38px;height:38px;border-radius:50%;background:var(--rose);display:grid;place-items:center;flex:none}
+.mk img{width:23px}
+.wm-wrap{display:grid;line-height:1.1;min-width:0}
+.wm{font-family:var(--font-display);font-weight:600;font-size:1.02rem;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.wm-wrap small{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.nav{display:none}
+.top-actions{display:flex;align-items:center;gap:8px}
+.top-wa{color:var(--ok);border-color:#CFE6D9}
+.top-cta{display:none}
 
-/* ajustes finais (ordem importa) */
-.brand .mk{width:42px;height:42px;border-radius:50%;object-fit:cover;flex:none}
-.brand .wm{font-family:var(--font-display);font-weight:500;font-size:1.08rem;letter-spacing:.14em;text-transform:uppercase;line-height:1.1;display:block}
-.brand small{letter-spacing:.2em;font-size:.6rem;margin-top:2px}
-.arch img{object-position:center}
-.svc .price{white-space:nowrap;font-size:1.5rem}
-.svc-foot{flex-wrap:wrap}
-.jr-foot{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:12px}
-.jr-foot .btn{width:100%}
-.nav a{padding:6px 9px;font-size:.9rem}
-.brand .wm{font-size:1rem;letter-spacing:.12em}
-@media (max-width:719px){.brand .wm{font-size:.88rem;letter-spacing:.09em}}
+/* barra inferior (celular) */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding:6px max(4px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(4px,env(safe-area-inset-left,0px));box-shadow:0 -6px 20px -14px rgba(70,35,35,.3)}
+.tabbar a,.tabbar button{display:grid;justify-items:center;align-content:center;gap:3px;min-height:52px;border:0;background:none;font:inherit;font-size:.7rem;color:var(--muted);text-decoration:none;cursor:pointer;padding:0 2px;border-radius:12px}
+.tabbar [aria-current="page"]{color:var(--brand)}
+.tabbar .tab-main .ic{background:var(--brand);color:#fff;border-radius:50%;padding:7px;width:38px;height:38px;margin-top:-14px;box-shadow:0 6px 14px -6px rgba(168,88,89,.8)}
+.tabbar .tab-main{color:var(--brand)}
+body{padding-bottom:calc(var(--tab-h) + env(safe-area-inset-bottom,0px))}
+body.in-flow .tabbar{display:none}
+body.in-flow{padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+body.in-flow #toast{bottom:calc(104px + env(safe-area-inset-bottom,0px))}
 
-/* ===== identidade Caren Bragagnollo ===== */
-body{font-synthesis:none}
-b,strong{font-family:var(--font-display);font-weight:700;font-size:1.08em;letter-spacing:.005em}
-h3{font-family:var(--font-display);font-weight:600;font-size:1.3rem}
-.btn,.chip,.tag,.st,.eyebrow,.seg button,.subtabs button{font-weight:400}
-.art{display:block;background:currentColor;-webkit-mask:var(--img) center/contain no-repeat;mask:var(--img) center/contain no-repeat}
-.hero h1{font-size:clamp(2.3rem,5.8vw,3.9rem);line-height:1.04}
-.strip{background:var(--rose)}
-.strip .wrap{font-size:1.5rem}
-.strip i.art{width:15px;height:15px;border-radius:0;opacity:.85;background:currentColor;align-self:center}
-.arch{background:var(--rose);box-shadow:none}
-.arch .logo{position:absolute;inset:auto;left:50%;top:42%;width:62%;height:auto;object-fit:contain;transform:translate(-50%,-50%)}
-.arch .orbit{position:absolute;left:50%;top:42%;width:108%;aspect-ratio:3.1;transform:translate(-50%,-50%) rotate(-16deg);color:#fff;opacity:.38}
+/* folha "Mais" */
+.sheet{position:fixed;inset:0;z-index:60}
+.sheet-scrim{position:absolute;inset:0;background:rgba(40,20,20,.35);animation:fade .2s ease-out}
+.sheet-panel{position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:22px 22px 0 0;padding:10px 20px calc(20px + env(safe-area-inset-bottom,0px));animation:up .25s cubic-bezier(.2,.8,.2,1);max-height:85vh;overflow-y:auto}
+.sheet-panel::before{content:"";display:block;width:40px;height:4px;border-radius:9px;background:var(--line-2);margin:0 auto 14px}
+.sheet-list{list-style:none;padding:0;display:grid}
+.sheet-list a{display:flex;align-items:center;gap:14px;padding:14px 4px;text-decoration:none;color:var(--fg);font-size:1.02rem;border-bottom:1px solid var(--line)}
+.sheet-list li:last-child a{border-bottom:0}
+.sheet-list .ic{color:var(--brand)}
+.sheet-list .go{margin-left:auto;color:var(--muted)}
+@keyframes up{from{transform:translateY(40px);opacity:.5}to{transform:none;opacity:1}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+/* seções */
+.sec{padding-block:40px}
+.sec.tint{background:var(--tint)}
+.sec.pt0{padding-top:0}
+.page-head{padding-block:28px 20px}
+.page-head h1{font-size:2.3rem}
+.page-head p{margin-top:8px}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:16px}
+.sec-h h2,.sec-title{font-size:1.65rem}
+.sec-title{margin-bottom:16px}
+.sec-sub{margin:-8px 0 18px}
+.more{color:var(--brand);text-decoration:none;font-size:.95rem;white-space:nowrap}
+.more::after{content:" →"}
+
+/* início */
+.hero{background:linear-gradient(180deg,var(--tint),#fff);padding-block:28px 32px;text-align:center}
+.hero-in{display:grid;gap:22px;justify-items:center}
+.arch{width:min(44vw,176px);aspect-ratio:4/5;border-radius:999px 999px 18px 18px;background:var(--rose);position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.arch .logo{position:absolute;left:50%;top:47%;width:74%;transform:translate(-50%,-50%)}
+.arch .orbit{position:absolute;left:50%;top:47%;width:125%;aspect-ratio:3.1;transform:translate(-50%,-50%) rotate(-16deg);color:#fff;opacity:.3}
 .arch .sp1,.arch .sp2,.arch .sp3{position:absolute;color:#fff}
-.arch .sp1{left:15%;top:15%;width:24px;aspect-ratio:1}
-.arch .sp2{right:16%;top:63%;width:15px;aspect-ratio:1;opacity:.8}
-.arch .sp3{right:11%;top:9%;width:50px;aspect-ratio:300/232;opacity:.85}
-.brand .mk{background:var(--rose);display:grid;place-items:center}
-.brand .mk img{width:25px;height:auto;display:block}
-.brand .wm{font-weight:500;font-size:1rem}
-.about-main{position:relative}
-.art.face{width:150px;height:190px;color:var(--brand);opacity:.5;margin-top:24px}
-.faq-wrap{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));align-items:start}
-.check-card{display:grid;gap:12px;position:relative}
-.check-card ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.check-card li{display:flex;gap:10px;align-items:center;color:var(--muted)}
-.check-card li::before{content:"✓";color:var(--brand);font-weight:700;width:22px;height:22px;border-radius:50%;background:var(--brand-soft);display:grid;place-items:center;font-size:.8rem;flex:none}
-.art.arch-art{width:46px;height:58px;color:var(--rose);opacity:.7}
-.info-list a{color:var(--brand)}
-@media (max-width:719px){.hero h1{font-size:clamp(2.1rem,9vw,2.8rem)}.arch .sp3{width:38px}}
-body,h1,h2,h3,b,strong,.kpi,.price{font-variant-numeric:lining-nums}
+.arch .sp1{left:16%;top:17%;width:12px;height:12px}
+.arch .sp2{right:12%;top:56%;width:14px;height:14px;opacity:.75}
+.arch .sp3{left:12%;bottom:12%;width:16px;height:16px;opacity:.6}
+.hero h1{font-size:2.15rem;line-height:1.08;font-weight:500}
+.hero h1 em{color:var(--brand);font-style:italic}
+.lead{color:var(--muted);font-size:1.05rem;margin-top:12px}
+.hero-cta{display:grid;gap:10px;margin-top:22px;width:100%}
+.facts{list-style:none;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin-top:18px;font-size:.88rem;color:var(--muted)}
+.facts li{display:inline-flex;align-items:center;gap:6px}
+.facts .ic{color:var(--brand)}
+.slots-scroll{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;margin:0 -20px;padding:4px 20px 8px;scroll-snap-type:x proximity}
+.slots-scroll::-webkit-scrollbar{display:none}
+.slot{flex:none;scroll-snap-align:start;display:grid;gap:2px;justify-items:start;min-width:132px;padding:14px 16px;border:1px solid var(--line-2);border-radius:16px;background:#fff;font:inherit;color:var(--fg);cursor:pointer;text-align:left;box-shadow:var(--shadow-sm)}
+.slot small{color:var(--muted);font-size:.8rem}
+.slot strong{font-family:var(--font-body);font-weight:400;font-size:1.35rem;font-variant-numeric:tabular-nums}
+.slot span{font-size:.82rem;color:var(--brand)}
+.slot:hover{border-color:var(--brand)}
+.skel{height:16px;border-radius:8px;background:linear-gradient(90deg,var(--surface-2),var(--line),var(--surface-2));background-size:200% 100%;animation:shine 1.4s ease-in-out infinite}
+.skel.slot-sk{flex:none;width:132px;height:88px;border-radius:16px}
+.skel.row-sk{height:96px;border-radius:16px}
+@keyframes shine{from{background-position:100% 0}to{background-position:-100% 0}}
+.how{list-style:none;padding:0;display:grid;gap:18px}
+.how li{display:grid;grid-template-columns:36px 1fr;gap:14px;align-items:start}
+.how-n{width:36px;height:36px;border-radius:50%;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;font-family:var(--font-display);font-weight:700;font-size:1.1rem}
+.how h3{font-size:1.25rem;margin-bottom:4px}
+.how p{color:var(--muted);font-size:.95rem}
+.teaser{display:grid;grid-template-columns:72px 1fr;gap:18px;align-items:start}
+.teaser-art{width:72px;height:96px;color:var(--rose);opacity:.7}
+.teaser h2{font-size:1.6rem;margin-bottom:6px}
+.teaser .more{display:inline-block;margin-top:10px}
+.quote{font-family:var(--font-display);font-style:italic;font-size:1.45rem;line-height:1.25;color:var(--fg)}
+.visit{display:grid;gap:14px;border:1px solid var(--line);border-radius:20px;padding:20px;background:#fff;box-shadow:var(--shadow-sm)}
+.visit h2{font-size:1.6rem}
+.visit-row{display:flex;gap:12px;align-items:flex-start}
+.visit-row .ic{color:var(--brand);margin-top:2px}
+.visit-btns{display:grid;gap:10px;margin-top:4px}
 
-.demo-bar .wrap{display:flex;justify-content:space-between;gap:12px;align-items:center}
-.demo-link{background:none;border:0;color:inherit;font:inherit;text-decoration:underline;cursor:pointer;padding:0;white-space:nowrap}
-.sub-head{display:grid;gap:4px;margin:0 0 18px}
-.sub-head h3{font-size:1.5rem}
-.combos{margin-top:clamp(40px,6vw,64px);padding-top:clamp(28px,4vw,40px);border-top:1px solid var(--line)}
-.steps-flow.mini{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));margin-bottom:22px}
-.steps-flow.mini li{padding:12px 16px;font-size:.92rem;display:flex;gap:10px;align-items:baseline}
-.steps-flow.mini li::before{font-size:1.5rem;display:inline;margin:0;flex:none}
-.mine{margin-top:clamp(36px,6vw,56px);padding-top:clamp(24px,4vw,36px);border-top:1px solid var(--line)}
-.admin-bar{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap;margin-bottom:22px}
-.admin-bar>div{display:grid;gap:6px}
-#admin{display:none;min-height:70vh}
-body.admin #admin{display:block}
-body.admin main>section:not(#admin),body.admin .nav,body.admin .mbar,body.admin .top-actions .primary{display:none}
-.info-list{grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px}
-.info-list>div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;gap:12px;align-items:flex-start}
-.info-list>div:last-child{grid-column:1/-1;background:none;border:0;padding:4px 0}
-.foot-links{display:grid;gap:6px}.foot-links a{text-decoration:none}
-.linkbtn{background:none;border:0;color:var(--muted);font:inherit;text-decoration:underline;cursor:pointer;padding:0}
-@media (max-width:879px){.demo-bar{font-size:.74rem}}
-.steps-flow.mini li{display:block}
-.steps-flow.mini li b{font-family:var(--font-display);font-size:1.05rem}
-.info-list a{overflow-wrap:anywhere}
-body.admin .demo-link{display:none}
-@media (max-width:599px){.steps-flow.mini{grid-template-columns:1fr 1fr;gap:8px}.steps-flow.mini li{padding:10px 12px;font-size:.84rem}.steps-flow.mini li::before{display:block;margin-bottom:2px}}
+/* procedimentos */
+.svc-list{display:grid;gap:12px}
+.svc{display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 14px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow-sm)}
+.svc-ic{grid-row:span 2;width:44px;height:44px;border-radius:50%;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center}
+.svc h3{font-size:1.3rem}
+.svc-meta span{display:inline-flex;align-items:center;gap:5px}
+.svc-meta{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;font-size:.9rem;color:var(--muted)}
+.svc-meta .price{font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:var(--brand)}
+.svc-desc{grid-column:2;color:var(--muted);font-size:.93rem;margin-top:4px}
+.svc-foot{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px;padding-top:12px;border-top:1px solid var(--line)}
+.svc-prep{font-size:.88rem}
+.svc-prep summary{color:var(--brand);cursor:pointer;list-style:none}
+.svc-prep summary::-webkit-details-marker{display:none}
+.svc-prep summary::before{content:"+ "}
+.svc-prep[open] summary::before{content:"– "}
+.svc-prep p{color:var(--muted);margin-top:6px;max-width:42ch}
+.svc-prep[open]{flex-basis:100%}
+.svc-foot:has(.svc-prep[open]){flex-wrap:wrap}
+.combos{display:grid;gap:12px}
+.combo{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;display:grid;gap:10px;box-shadow:var(--shadow-sm)}
+.combo h3{font-size:1.35rem}
+.combo-items{display:flex;flex-wrap:wrap;gap:6px}
+.combo-items span{font-size:.82rem;padding:4px 10px;border-radius:99px;background:var(--surface-2);color:var(--fg)}
+.combo-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.combo-foot .price{font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--brand)}
+
+/* agendamento */
+.flow{padding-block:18px 24px}
+.flow-in{max-width:720px}
+.flow-top{margin-bottom:18px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px}
+.steps i{height:4px;border-radius:9px;background:var(--line)}
+.steps i.on{background:var(--brand)}
+.step-lbl{font-size:.85rem;color:var(--muted)}
+.flow h1{font-size:2rem;margin-top:4px}
+.flow h2.q{font-size:1.4rem;margin:22px 0 12px}
+.banner{background:var(--warn-soft);color:var(--warn);border-radius:14px;padding:12px 14px;font-size:.92rem;margin-bottom:12px}
+.grp{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:18px 0 8px}
+.pick{display:grid;gap:8px}
+.pick-it{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;text-align:left;background:#fff;border:1px solid var(--line-2);border-radius:16px;padding:12px 14px;font:inherit;color:var(--fg);cursor:pointer;min-height:68px}
+.pick-it:hover{border-color:var(--brand)}
+.pick-it[aria-pressed="true"]{border-color:var(--brand);box-shadow:0 0 0 2px var(--brand-soft)}
+.pick-ic{width:40px;height:40px;border-radius:50%;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center}
+.pick-it b{display:block;font-size:1.12rem;line-height:1.2}
+.pick-it small{color:var(--muted);font-size:.86rem}
+.pick-it .go{color:var(--muted)}
+.chosen{display:flex;align-items:center;gap:12px;background:var(--tint);border:1px solid var(--line);border-radius:16px;padding:12px 14px}
+.chosen .pick-ic{flex:none}
+.chosen div{flex:1;min-width:0}
+.chosen b{display:block;font-size:1.1rem;line-height:1.2}
+.chosen small{color:var(--muted)}
+.dates{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -20px;padding:2px 20px 6px;scroll-snap-type:x proximity}
+.dates::-webkit-scrollbar{display:none}
+.date{flex:none;scroll-snap-align:start;width:64px;display:grid;justify-items:center;gap:0;padding:10px 0;border:1px solid var(--line-2);border-radius:16px;background:#fff;font:inherit;color:var(--fg);cursor:pointer}
+.date small{font-size:.74rem;color:var(--muted);text-transform:lowercase}
+.date b{font-family:var(--font-body);font-weight:400;font-size:1.4rem;line-height:1.3;font-variant-numeric:tabular-nums}
+.date[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
+.date[aria-pressed="true"] small{color:#fff;opacity:.9}
+.date:disabled{opacity:.35;cursor:not-allowed;background:var(--surface-2)}
+.tgrp{margin-top:14px}
+.tgrp .lbl{display:block;margin-bottom:8px}
+.recap{background:var(--tint);border:1px solid var(--line);border-radius:18px;padding:16px;display:grid;gap:10px}
+.recap-row{display:flex;gap:12px;align-items:center}
+.recap-row .ic{color:var(--brand)}
+.recap-row b{font-size:1.12rem}
+.recap-edit{justify-self:start;font-size:.9rem}
+.bform{display:grid;gap:16px;margin-top:20px}
+.flowbar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;border-top:1px solid var(--line);box-shadow:0 -10px 24px -16px rgba(70,35,35,.35);padding:12px 0 calc(12px + env(safe-area-inset-bottom,0px))}
+.flowbar-in{max-width:720px;display:flex;align-items:center;gap:12px}
+.flowbar .sum{flex:1;min-width:0;font-size:.85rem;color:var(--muted);line-height:1.3}
+.flowbar .sum b{display:block;color:var(--fg);font-size:1.02rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.flowbar .btn.primary{min-width:140px}
+.done{text-align:center;display:grid;gap:14px;justify-items:center;padding-top:10px}
+.tick{width:72px;height:72px;border-radius:50%;background:var(--ok-soft);color:var(--ok);display:grid;place-items:center}
+.done h1{font-size:2.1rem}
+.code-box{display:grid;gap:4px;justify-items:center;background:var(--tint);border:1px dashed var(--brand);border-radius:18px;padding:16px 22px;width:100%}
+.code-box small{color:var(--muted)}
+.code-box strong{font-family:var(--font-body);font-weight:400;font-size:1.9rem;letter-spacing:.08em;color:var(--brand)}
+.done .recap{text-align:left;width:100%}
+.prep{background:var(--warn-soft);border-radius:14px;padding:12px 14px;text-align:left;font-size:.93rem;width:100%}
+.done-btns{display:grid;gap:10px;width:100%}
+
+/* meus horários */
+.look{display:grid;gap:16px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--shadow-sm)}
+.look p{font-size:.9rem}
+.mine-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.appts{display:grid;gap:12px}
+.appt{display:grid;grid-template-columns:62px minmax(0,1fr);gap:4px 14px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow-sm)}
+.appt.past{box-shadow:none;background:var(--tint)}
+.appt-date{grid-row:span 2;display:grid;justify-items:center;align-content:center;background:var(--brand-soft);color:var(--brand);border-radius:14px;padding:8px 0;line-height:1.1}
+.appt.past .appt-date{background:var(--surface-2);color:var(--muted)}
+.appt-date small{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}
+.appt-date strong{font-family:var(--font-body);font-weight:400;font-size:1.6rem}
+.appt h3{font-size:1.2rem}
+.appt-meta{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+.appt-acts{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px;padding-top:12px;border-top:1px solid var(--line)}
+.appt-acts .btn{flex:1}
+.appt-confirm{grid-column:1/-1;display:grid;gap:10px;margin-top:10px;padding:12px;border-radius:14px;background:var(--bad-soft)}
+.appt-confirm div{display:flex;gap:8px}
+.appt-confirm .btn{flex:1}
+.sub-t{font-size:1.3rem;margin:26px 0 12px}
+
+/* sobre, dúvidas, contato */
+.about-head{text-align:left}
+.about-art{width:84px;height:110px;color:var(--rose);opacity:.75;margin-bottom:12px}
+.about-head .quote{margin:12px 0}
+.pillars{list-style:none;padding:0;display:grid;gap:12px;margin-bottom:22px}
+.pillars li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px}
+.pillars li>span{width:44px;height:44px;border-radius:50%;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center}
+.pillars h3{font-size:1.2rem;margin-bottom:2px}
+.cta-card{display:grid;gap:14px;background:var(--rose);color:#fff;border-radius:22px;padding:22px}
+.cta-card h2{color:#fff;font-size:1.6rem}
+.cta-card p{opacity:.92;margin-top:4px}
+.faqs{display:grid;gap:10px}
+.faq{background:#fff;border:1px solid var(--line);border-radius:16px;padding:0 16px}
+.faq summary{list-style:none;cursor:pointer;padding:16px 28px 16px 0;position:relative;font-size:1rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:2px;top:50%;width:9px;height:9px;border-right:1.5px solid var(--brand);border-bottom:1.5px solid var(--brand);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
+.faq[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.faq p{color:var(--muted);padding:0 0 16px;font-size:.95rem}
+.care{margin-top:24px;background:var(--tint);border-radius:20px;padding:20px}
+.care h2{font-size:1.4rem;margin-bottom:12px}
+.checklist{list-style:none;padding:0;display:grid;gap:10px}
+.checklist li{display:flex;gap:10px;align-items:center}
+.checklist li::before{content:"";width:22px;height:22px;border-radius:50%;flex:none;background:var(--brand-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A85859' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/12px no-repeat}
+.info-card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow-sm)}
+.info-row{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-bottom:1px solid var(--line)}
+.info-row:last-child{border-bottom:0}
+.info-row>.ic{color:var(--brand);margin-top:3px}
+.info-row div{min-width:0}
+.info-row b{display:block;font-size:1.05rem}
+.info-row a{overflow-wrap:anywhere}
+.info-btns{display:grid;gap:10px;padding:16px 18px;background:var(--tint)}
+.form-card{display:grid;gap:14px;margin-top:20px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px}
+.form-card h2{font-size:1.4rem}
+
+/* rodapé */
+.foot{border-top:1px solid var(--line);background:var(--tint);padding-block:28px}
+.foot-brand{display:grid;gap:2px}
+.foot-brand b{font-size:1.4rem}
+.foot-brand span{color:var(--muted);font-size:.9rem}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 18px;margin:16px 0;font-size:.92rem}
+.foot-links a{color:var(--fg);text-decoration:none}
+.foot-bot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+.foot-bot a{color:var(--muted)}
+
+/* telas maiores */
+@media (min-width:600px){
+  .hero-cta{grid-template-columns:auto auto;justify-content:center;width:auto}
+  .visit-btns,.info-btns,.done-btns{grid-template-columns:1fr 1fr}
+  .svc-list.full{grid-template-columns:1fr 1fr}
+  .combos{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .cta-card{grid-template-columns:1fr auto;align-items:center}
+}
+@media (min-width:900px){
+  :root{--tab-h:0px}
+  .tabbar{display:none}
+  body,body.in-flow{padding-bottom:0}
+  body.in-flow{padding-bottom:96px}
+  .nav{display:flex;gap:2px}
+  .nav a{padding:8px 13px;border-radius:99px;color:var(--muted);text-decoration:none;font-size:.95rem}
+  .nav a:hover{color:var(--fg);background:var(--tint)}
+  .nav a[aria-current="page"]{color:var(--brand);background:var(--brand-soft)}
+  .top-cta{display:inline-flex}
+  .top-in{min-height:72px}
+  .wm{font-size:1.12rem}
+  .sec{padding-block:64px}
+  .page-head{padding-block:48px 28px}
+  .page-head h1{font-size:3rem}
+  .hero{text-align:left;padding-block:56px 64px}
+  .hero-in{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);align-items:center;justify-items:stretch;gap:48px}
+  .hero-art{order:2;justify-self:center}
+  .arch{width:300px}
+  .hero h1{font-size:3.6rem}
+  .lead{font-size:1.15rem}
+  .hero-cta{justify-content:start}
+  .facts{justify-content:flex-start}
+  .svc-list{grid-template-columns:repeat(3,1fr)}
+  .svc-list.full{grid-template-columns:repeat(3,1fr)}
+  .how{grid-template-columns:repeat(3,1fr);gap:28px}
+  .visit{grid-template-columns:1fr auto;align-items:center;padding:28px}
+  .visit-btns{grid-template-columns:auto auto}
+  .flow{padding-block:36px}
+  .flow h1{font-size:2.6rem}
+  .chips{flex-wrap:wrap;overflow:visible;margin:0 0 22px;padding:0}
+  .slots-scroll{margin:0;padding:4px 0 8px}
+  .dates{margin:0;padding:2px 0 6px}
+  #toast{bottom:24px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* linha compacta de procedimento (início) */
+.svc.compact{grid-template-columns:44px minmax(0,1fr) auto;align-items:center}
+.svc.compact .svc-ic{grid-row:span 2}
+.svc.compact h3{font-size:1.2rem}
+.svc.compact .btn{grid-column:3;grid-row:1/span 2}
+
+/* contraste e hierarquia */
+.st-confirmada,.appt-date,.how-n,.chosen .linkbtn{color:var(--brand-d)}
+.nav a[aria-current="page"]{color:var(--brand-d)!important}
+.wm-wrap small{font-size:.7rem}
+.pillars h2{font-size:1.2rem;margin-bottom:2px}
+
 
 /* ===== Painel da Caren ===== */
 :root{--side:#EFE6E1;--ev-a:#FFFFFF;--ev-c:#F3E1E1;--ev-w:#F7EBD2;--ev-i:#DDEFE5;--ev-d:#EEEAE7;--ev-f:#F7DEDB;--hatch:rgba(168,88,89,.07)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--side:#1E1617;--ev-a:#241B1C;--ev-c:#43292A;--ev-w:#3A3020;--ev-i:#1F3328;--ev-d:#2A2223;--ev-f:#432624;--hatch:rgba(217,139,140,.08)}}
-:root[data-theme="dark"]{--side:#1E1617;--ev-a:#241B1C;--ev-c:#43292A;--ev-w:#3A3020;--ev-i:#1F3328;--ev-d:#2A2223;--ev-f:#432624;--hatch:rgba(217,139,140,.08)}
 ::selection{background:var(--brand-soft);color:var(--fg)}
 .sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-body.admin .top,body.admin main,body.admin .foot,body.admin .mbar,body.admin .demo-bar{display:none!important}
+body.admin .top,body.admin main,body.admin .foot,body.admin .tabbar,body.admin .flowbar,body.admin .sheet{display:none!important}
 body.admin{padding-bottom:0!important;overflow:hidden}
 .adm{position:fixed;inset:0;z-index:50;background:var(--bg);display:grid;grid-template-columns:264px minmax(0,1fr);padding-top:env(safe-area-inset-top,0px);font-size:15px;line-height:1.5}
 .adm button{font:inherit;color:inherit}
@@ -610,7 +647,7 @@ fieldset.field legend{margin-bottom:6px}
 .a-login-card h1{font-size:2.2rem}
 /* público: ícones no lugar de caracteres */
 .stepper div b svg{display:block}
-.check-card li::before{content:"";background:var(--brand-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A85859' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/12px no-repeat}
+.x-unused{content:"";background:var(--brand-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A85859' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/12px no-repeat}
 /* responsivo */
 @media (max-width:1100px){.a-cols{grid-template-columns:minmax(0,1fr)}.a-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.a-stats>div:nth-child(3){border-left:0}.a-stats>div:nth-child(n+3){border-top:1px solid var(--line)}}
 @media (max-width:960px){
@@ -659,33 +696,6 @@ fieldset.field legend{margin-bottom:6px}
 .dr .segm,.a-form .segm{justify-self:start}
 .brand small{font-size:.68rem}
 
-#toast{z-index:90}
-
-/* ===== páginas separadas ===== */
-.page[hidden]{display:none!important}
-.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--brand);color:var(--brand-fg);padding:10px 16px;border-radius:10px;text-decoration:none}
-.skip:focus{top:calc(10px + env(safe-area-inset-top,0px))}
-.nav a[aria-current="page"]{color:var(--brand);background:var(--brand-soft)}
-.page-title{font-family:var(--font-display);font-weight:500;font-size:clamp(2.2rem,5vw,3.2rem);line-height:1.05;letter-spacing:-.005em}
-.h3{font-family:var(--font-display);font-weight:600;font-size:1.35rem;line-height:1.2}
-.about .big{font-family:var(--font-display);font-weight:500;font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.15;margin-top:12px}
-.row-head{max-width:none;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
-.row-head>div{display:grid;gap:10px}
-.cta-band{background:var(--rose);color:#fff;padding-block:clamp(40px,6vw,64px);position:relative;overflow:hidden}
-.cta-band .wrap{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px 32px;align-items:center}
-.cta-band h2{color:#fff;font-size:clamp(1.8rem,4vw,2.6rem)}
-.cta-band p{opacity:.92;margin-top:6px}
-.cta-art{width:84px;height:110px;color:#fff;opacity:.85}
-.btn.light{background:#fff;color:var(--rose);border-color:#fff}
-.btn.light:hover{filter:brightness(.97)}
-.btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.7)}
-.btn.ghost:hover{background:rgba(255,255,255,.12)}
-.btn.danger-out{color:var(--bad);border-color:color-mix(in srgb,var(--bad) 45%,transparent);background:var(--surface)}
-.btn:disabled{opacity:.6;cursor:progress}
-.skel{height:16px;border-radius:8px;background:linear-gradient(90deg,var(--surface-2),var(--line),var(--surface-2));background-size:200% 100%;animation:shine 1.4s ease-in-out infinite;margin:10px 0}
-.skel.w60{width:60%}.skel.w80{width:80%}
-.skel-card{min-height:240px;display:grid;align-content:start;gap:4px;padding:24px}
-@keyframes shine{from{background-position:100% 0}to{background-position:-100% 0}}
 .a-sync{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--muted);padding:6px 12px}
 .a-sync::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ok)}
 .a-sync[data-s="saving"]::before{background:var(--warn)}
@@ -694,152 +704,139 @@ fieldset.field legend{margin-bottom:6px}
 .a-side-foot a:hover{background:var(--surface);color:var(--fg)}
 .adm .muted-link{color:var(--muted)}
 .a-login-card .linkbtn{justify-self:center}
-#bookBody .err{margin-top:4px}
-@media (max-width:760px){
-  .cta-band .wrap{grid-template-columns:minmax(0,1fr)}
-  .cta-art{display:none}
-  .row-head .btn{display:none}
-}
-@media (prefers-reduced-motion:reduce){.skel{animation:none}}
-
-.info-list a{overflow-wrap:normal;word-break:normal}
-.info-list>div:nth-child(4) p{font-size:.92rem}
-@media (min-width:880px){.contact .info-list>div:nth-child(4) a{font-size:.85rem}}
-
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 <header class="top">
-  <div class="wrap">
-    <a class="brand" href="#inicio" aria-label="Caren Bragagnollo Estética Facial, início"><span class="mk" aria-hidden="true"><img id="brandMark" alt=""></span><span><b class="wm" id="brandName"></b><small>Estética facial</small></span></a>
-    <div class="top-actions">
-      <button class="btn icon-btn" data-act="theme" aria-label="Alternar tema claro e escuro" id="themeBtn"></button>
-      <a class="btn primary" href="#agendar">Agendar</a>
-    </div>
+  <div class="wrap top-in">
+    <a class="brand" href="#inicio" aria-label="Caren Bragagnollo Estética Facial, início"><span class="mk" aria-hidden="true"><img id="brandMark" alt=""></span><span class="wm-wrap"><b class="wm" id="brandName"></b><small>Estética facial</small></span></a>
     <nav class="nav" aria-label="Páginas">
       <a href="#inicio" data-nav="inicio">Início</a><a href="#procedimentos" data-nav="procedimentos">Procedimentos</a><a href="#sobre" data-nav="sobre">Sobre</a><a href="#duvidas" data-nav="duvidas">Dúvidas</a><a href="#contato" data-nav="contato">Contato</a><a href="#meus-horarios" data-nav="meus-horarios">Meus horários</a>
     </nav>
+    <div class="top-actions"><a class="btn icon-btn top-wa" id="topWa" href="#" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp"></a><a class="btn primary sm top-cta" href="#agendar">Agendar</a></div>
   </div>
 </header>
 
 <main id="conteudo">
 <div class="page" data-page="inicio">
-<section class="hero"><div class="wrap">
-  <div>
-    <span class="eyebrow">Estética facial em Guaíra</span>
-    <h1>A riqueza da sua própria beleza <em>lapidada na melhor versão.</em></h1>
-    <p class="lead">Atendimento exclusivo com a Caren: design de sobrancelhas, limpeza de pele e cuidados pensados para a sua pele. Veja os horários livres e agende em menos de um minuto.</p>
-    <div class="cta-row">
-      <a class="btn primary" href="#agendar">Agendar horário</a>
-      <a class="btn" href="#procedimentos">Ver procedimentos</a>
+  <section class="hero"><div class="wrap hero-in">
+    <div class="hero-art" aria-hidden="true"><div class="arch" id="arch"></div></div>
+    <div class="hero-copy">
+      <h1>A riqueza da sua própria beleza <em>lapidada na melhor versão.</em></h1>
+      <p class="lead">Estética facial com atendimento exclusivo da Caren, em Guaíra.</p>
+      <div class="hero-cta"><a class="btn primary" href="#agendar">Agendar horário</a><a class="btn" href="#procedimentos">Ver procedimentos</a></div>
+      <ul class="facts" id="facts"></ul>
     </div>
-    <div class="facts" id="facts"></div>
-  </div>
-  <div class="visual">
-    <div class="visual-wrap"><div class="arch" id="arch"></div><span class="float f1"><i class="dot"></i>Atendimento individual</span><span class="float f2">Lembrete 24 h antes</span></div>
-    <div class="card now" id="nowCard"></div>
-  </div>
-</div></section>
+  </div></section>
 
-<section class="sec alt"><div class="wrap">
-  <div class="sec-head row-head"><div><span class="eyebrow">Mais procurados</span><h2>Cuidados para começar</h2></div><a class="btn" href="#procedimentos">Ver todos os procedimentos</a></div>
-  <div class="grid g3" id="homeFeat"></div>
-</div></section>
+  <section class="sec"><div class="wrap">
+    <div class="sec-h"><h2>Horários livres</h2><a class="more" href="#agendar">Ver agenda</a></div>
+    <div class="slots-scroll" id="nowCard"></div>
+  </div></section>
 
-<section class="sec"><div class="wrap">
-  <div class="sec-head"><span class="eyebrow">Como funciona</span><h2>Do agendamento ao cuidado em casa</h2></div>
-  <ol class="steps-flow">
-    <li><h3>Escolha e agende</h3><p class="muted small">Só aparecem horários realmente livres. Você recebe um código para consultar ou remarcar.</p></li>
-    <li><h3>Receba o lembrete</h3><p class="muted small">Na véspera, a Caren envia o lembrete com as orientações de preparo.</p></li>
-    <li><h3>Cuide-se com orientação</h3><p class="muted small">Depois da sessão, você sabe exatamente como cuidar da pele em casa.</p></li>
-  </ol>
-</div></section>
+  <section class="sec tint"><div class="wrap">
+    <div class="sec-h"><h2>Procedimentos</h2><a class="more" href="#procedimentos">Ver todos</a></div>
+    <div class="svc-list" id="homeFeat"></div>
+  </div></section>
 
-<section class="cta-band"><div class="wrap">
-  <span class="art cta-art" data-art="face2" aria-hidden="true"></span>
-  <div><h2>Pronta para cuidar da sua pele?</h2><p>Escolha o procedimento, o dia e o horário. Leva menos de um minuto.</p></div>
-  <div class="cta-row"><a class="btn light" href="#agendar">Agendar horário</a><a class="btn ghost" id="ctaWa" href="#" target="_blank" rel="noopener">Falar no WhatsApp</a></div>
-</div></section>
+  <section class="sec"><div class="wrap">
+    <h2 class="sec-title">Como funciona</h2>
+    <ol class="how">
+      <li><span class="how-n">1</span><div><h3>Escolha o procedimento e o horário</h3><p>Só aparecem horários realmente livres. Leva menos de um minuto.</p></div></li>
+      <li><span class="how-n">2</span><div><h3>Receba o lembrete</h3><p>Na véspera, a Caren manda uma mensagem com as orientações de preparo.</p></div></li>
+      <li><span class="how-n">3</span><div><h3>Remarque se precisar</h3><p>Em Meus horários, com o seu telefone e o código do agendamento.</p></div></li>
+    </ol>
+  </div></section>
+
+  <section class="sec tint"><div class="wrap teaser">
+    <span class="art teaser-art" data-art="face3" aria-hidden="true"></span>
+    <div><h2>Conheça a Caren</h2><p class="muted">Esteticista facial, especialista em design de sobrancelhas e limpeza de pele. Cada atendimento começa com uma conversa sobre a sua pele.</p><a class="more" href="#sobre">Saber mais</a></div>
+  </div></section>
+
+  <section class="sec"><div class="wrap"><div class="visit" id="visit"></div></div></section>
 </div>
 
 <div class="page" data-page="procedimentos" hidden>
-<section class="sec"><div class="wrap">
-  <div class="sec-head"><span class="eyebrow">Procedimentos</span><h1 class="page-title">Escolha o seu cuidado</h1><p>Duração e valor de cada procedimento. Ao agendar, você recebe as orientações de preparo.</p></div>
-  <div class="chips" id="catChips"></div>
-  <div class="grid g3" id="svcGrid"></div>
-  <div class="combos"><div class="sub-head"><h2 class="h3">Combinações sugeridas</h2><p class="muted">Você agenda uma sessão por vez, no seu ritmo. Valores somados; pacotes são combinados com a Caren.</p></div>
-  <div class="grid g3" id="jGrid"></div></div>
-</div></section>
+  <section class="sec page-head"><div class="wrap">
+    <h1>Procedimentos</h1><p class="muted">Duração e valor de cada cuidado. As orientações de preparo chegam no lembrete.</p>
+  </div></section>
+  <section class="sec pt0"><div class="wrap">
+    <div class="chips" id="catChips"></div>
+    <div class="svc-list full" id="svcGrid"></div>
+  </div></section>
+  <section class="sec tint"><div class="wrap">
+    <h2 class="sec-title">Combinações sugeridas</h2>
+    <p class="muted sec-sub">Sessões que funcionam bem juntas. Você agenda uma por vez, no seu ritmo.</p>
+    <div class="combos" id="jGrid"></div>
+  </div></section>
 </div>
 
 <div class="page" data-page="agendar" hidden>
-<section class="sec"><div class="wrap">
-  <div class="sec-head"><span class="eyebrow">Agendamento</span><h1 class="page-title">Reserve o seu horário</h1><p>Sem cadastro. Só aparecem horários realmente livres. Já tem um horário? <a href="#meus-horarios">Consulte, remarque ou cancele</a>.</p></div>
-  <div class="book"><div class="stepper" id="stepper"></div><div class="book-body" id="bookBody"></div></div>
-</div></section>
+  <section class="flow"><div class="wrap flow-in">
+    <div class="flow-top" id="stepper"></div>
+    <div id="bookBody"></div>
+  </div></section>
+  <div class="flowbar" id="flowBar" hidden></div>
 </div>
 
 <div class="page" data-page="meus-horarios" hidden>
-<section class="sec"><div class="wrap">
-  <div class="sec-head"><span class="eyebrow">Meus horários</span><h1 class="page-title">Consulte, remarque ou cancele</h1><p>Use o telefone e o código que você recebeu ao agendar.</p></div>
-  <div id="portalBody"></div>
-</div></section>
+  <section class="sec page-head"><div class="wrap narrow">
+    <h1>Meus horários</h1><p class="muted">Consulte, remarque ou cancele os seus horários.</p>
+  </div></section>
+  <section class="sec pt0"><div class="wrap narrow" id="portalBody"></div></section>
 </div>
 
 <div class="page" data-page="sobre" hidden>
-<section class="sec"><div class="wrap about">
-  <div class="about-main">
-    <span class="eyebrow">Sobre a Caren</span>
-    <h1 class="big">“A riqueza da sua própria beleza lapidada na melhor versão.”</h1>
-    <p class="muted" style="max-width:52ch;margin-top:16px">Caren Bragagnollo é esteticista facial, especialista em design de sobrancelhas e limpeza de pele. O atendimento começa com uma conversa para entender a sua pele e os seus objetivos, e só depois o procedimento é indicado.</p>
-    <span class="art face" data-art="face3" role="img" aria-label="Ilustração de rosto em traço fino"></span>
-  </div>
-  <div class="pillars">
-    <div class="pillar"><span id="p1"></span><div><h3>Atendimento individual</h3><p class="muted">O horário é reservado só para você, sem pressa e sem fila.</p></div></div>
-    <div class="pillar"><span id="p2"></span><div><h3>Avaliação antes de indicar</h3><p class="muted">Você informa alergias e condições de saúde já no agendamento.</p></div></div>
-    <div class="pillar"><span id="p3"></span><div><h3>Orientações antes e depois</h3><p class="muted">Enviadas junto com o lembrete, para você chegar preparada.</p></div></div>
-  </div>
-</div></section>
-<section class="cta-band"><div class="wrap">
-  <span class="art cta-art" data-art="face2" aria-hidden="true"></span>
-  <div><h2>Vamos conversar sobre a sua pele?</h2><p>A avaliação facial é o primeiro passo e não tem custo.</p></div>
-  <div class="cta-row"><a class="btn light" href="#agendar">Agendar avaliação</a></div>
-</div></section>
+  <section class="sec page-head about-head"><div class="wrap narrow">
+    <span class="art about-art" data-art="face3" role="img" aria-label="Ilustração de rosto em traço fino"></span>
+    <h1>Sobre a Caren</h1>
+    <p class="quote">“A riqueza da sua própria beleza lapidada na melhor versão.”</p>
+    <p class="muted">Caren Bragagnollo é esteticista facial, especialista em design de sobrancelhas e limpeza de pele. O atendimento começa com uma conversa para entender a sua pele e os seus objetivos, e só depois o procedimento é indicado.</p>
+  </div></section>
+  <section class="sec pt0"><div class="wrap narrow">
+    <ul class="pillars">
+      <li><span id="p1"></span><div><h2>Atendimento individual</h2><p class="muted">O horário é reservado só para você, sem pressa e sem fila.</p></div></li>
+      <li><span id="p2"></span><div><h2>Avaliação antes de indicar</h2><p class="muted">Você informa alergias e condições de saúde já no agendamento.</p></div></li>
+      <li><span id="p3"></span><div><h2>Orientações antes e depois</h2><p class="muted">Enviadas junto com o lembrete, para você chegar preparada.</p></div></li>
+    </ul>
+    <div class="cta-card"><div><h2>Comece pela avaliação</h2><p>Uma conversa sobre a sua pele, sem custo.</p></div><a class="btn light" href="#agendar" data-act="goBook" data-svc="p1">Agendar avaliação</a></div>
+  </div></section>
 </div>
 
 <div class="page" data-page="duvidas" hidden>
-<section class="sec"><div class="wrap">
-  <div class="sec-head"><span class="eyebrow">Dúvidas frequentes</span><h1 class="page-title">Antes de agendar</h1></div>
-  <div class="faq-wrap"><div class="faqs">
-    <details class="faq"><summary>Como funciona a avaliação inicial?</summary><p>A Caren conversa com você, entende suas necessidades e indica o procedimento mais adequado. Você pode agendar a avaliação logo no primeiro passo.</p></details>
-    <details class="faq"><summary>Gestantes e lactantes podem fazer os procedimentos?</summary><p>Alguns procedimentos não são indicados na gestação e na amamentação. Informe no agendamento para que a Caren avalie o seu caso.</p></details>
-    <details class="faq"><summary>Posso remarcar ou cancelar?</summary><p>Sim. Em <a href="#meus-horarios">Meus horários</a>, use o telefone e o código do agendamento. O horário liberado volta a ficar disponível para outras pessoas.</p></details>
-    <details class="faq"><summary>Perdi o código do agendamento. E agora?</summary><p>Chame a Caren no WhatsApp com o seu nome e o dia marcado. Ela confirma ou remarca para você.</p></details>
-    <details class="faq"><summary>Como funciona o pagamento?</summary><p>O pagamento é feito no atendimento, por Pix, cartão ou dinheiro. Os valores do site são de referência.</p></details></div>
-    <aside class="card check-card"><span class="art arch-art" data-art="arch" aria-hidden="true"></span><h2 class="h3">Checklist de cuidados com a pele</h2><ul><li>Beba água ao longo do dia</li><li>Use protetor solar</li><li>Cuide da sua alimentação</li><li>Não passe a mão suja no rosto</li></ul></aside></div>
-</div></section>
+  <section class="sec page-head"><div class="wrap narrow"><h1>Dúvidas</h1><p class="muted">O que as clientes mais perguntam antes de agendar.</p></div></section>
+  <section class="sec pt0"><div class="wrap narrow">
+    <div class="faqs">
+      <details class="faq"><summary>Como funciona a avaliação inicial?</summary><p>A Caren conversa com você, entende suas necessidades e indica o procedimento mais adequado. A avaliação não tem custo.</p></details>
+      <details class="faq"><summary>Gestantes e lactantes podem fazer os procedimentos?</summary><p>Alguns procedimentos não são indicados na gestação e na amamentação. Marque essa opção no agendamento para que a Caren avalie o seu caso.</p></details>
+      <details class="faq"><summary>Posso remarcar ou cancelar?</summary><p>Sim. Em <a href="#meus-horarios">Meus horários</a>, use o telefone e o código do agendamento. O horário liberado volta a ficar disponível para outras pessoas.</p></details>
+      <details class="faq"><summary>Perdi o código do agendamento. E agora?</summary><p>Chame a Caren no WhatsApp com o seu nome e o dia marcado. Ela confirma ou remarca para você.</p></details>
+      <details class="faq"><summary>Como funciona o pagamento?</summary><p>O pagamento é feito no atendimento, por Pix, cartão ou dinheiro.</p></details>
+    </div>
+    <div class="care"><h2>Cuidados com a pele no dia a dia</h2><ul class="checklist"><li>Beba água ao longo do dia</li><li>Use protetor solar todos os dias</li><li>Cuide da alimentação</li><li>Evite tocar o rosto com as mãos sujas</li></ul></div>
+  </div></section>
 </div>
 
 <div class="page" data-page="contato" hidden>
-<section class="sec"><div class="wrap contact">
-  <div>
-    <div class="sec-head"><span class="eyebrow">Contato</span><h1 class="page-title">Fale com a Caren</h1></div>
-    <div class="info-list" id="infoList"></div>
-  </div>
-  <form class="card form" id="contactForm" novalidate>
-    <div class="field"><label for="cName">Nome</label><input class="input" id="cName" name="name" autocomplete="name" maxlength="120"></div>
-    <div class="field"><label for="cContact">Telefone ou e-mail</label><input class="input" id="cContact" name="contact" maxlength="120"></div>
-    <div class="field full"><label for="cText">Mensagem</label><textarea class="input" id="cText" name="text" maxlength="2000"></textarea></div>
-    <div class="full"><button class="btn primary" type="submit">Enviar mensagem</button></div>
-  </form>
-</div></section>
+  <section class="sec page-head"><div class="wrap narrow"><h1>Contato</h1><p class="muted">Fale com a Caren pelo WhatsApp ou deixe uma mensagem.</p></div></section>
+  <section class="sec pt0"><div class="wrap narrow">
+    <div class="info-card" id="infoList"></div>
+    <form class="form-card" id="contactForm" novalidate>
+      <h2>Enviar mensagem</h2>
+      <div class="field"><label for="cName">Nome</label><input class="input" id="cName" name="name" autocomplete="name" maxlength="120"></div>
+      <div class="field"><label for="cContact">WhatsApp ou e-mail</label><input class="input" id="cContact" name="contact" maxlength="120"></div>
+      <div class="field"><label for="cText">Mensagem</label><textarea class="input" id="cText" name="text" maxlength="2000"></textarea></div>
+      <button class="btn primary block" type="submit">Enviar mensagem</button>
+    </form>
+  </div></section>
 </div>
 </main>
 
 <footer class="foot"><div class="wrap" id="footBody"></div></footer>
-<div class="mbar"><a class="btn primary" href="#agendar">Agendar horário</a><a class="btn" id="mWa" href="#" target="_blank" rel="noopener">WhatsApp</a></div>
+<nav class="tabbar" id="tabbar" aria-label="Navegação"></nav>
+<div class="sheet" id="sheet" hidden><div class="sheet-scrim" data-act="more"></div><div class="sheet-panel" role="dialog" aria-modal="true" aria-label="Mais opções" id="sheetPanel"></div></div>
 <div id="adm" class="adm" hidden></div>
 <div id="toast" role="status" aria-live="polite"></div>
 
@@ -945,7 +942,7 @@ const newId=()=>(crypto.randomUUID?crypto.randomUUID():'xxxxxxxx-xxxx-4xxx-8xxx-
 const newCode=()=>'CC-'+[...crypto.getRandomValues(new Uint8Array(3))].map(b=>b.toString(16).padStart(2,'0')).join('').toUpperCase();
 const ui={cat:'Todos',confirm:null,lookupErr:''};
 let book=newBook();
-function newBook(){return{step:1,svc:null,date:null,time:null,pref:null,form:{name:'',phone:'',email:'',channel:'whatsapp',gest:false,health:'',consent:false},resched:null,done:null,err:''}}
+function newBook(){return{step:1,svc:null,date:null,time:null,pref:null,form:{name:'',phone:'',email:'',channel:'whatsapp',gest:false,hasHealth:false,health:'',consent:false},resched:null,done:null,err:''}}
 function daysText(){
   const d=S.cfg.days.slice().sort((a,b)=>(a||7)-(b||7)).map(x=>x||7);if(!d.length)return 'Sem dias de atendimento';
   const seq=d.every((x,i)=>i===0||x===d[i-1]+1);
@@ -1081,23 +1078,43 @@ function nextSlots(n){
 }
 
 /* ---------- render: público ---------- */
-function themeIcon(){const r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;$('#themeBtn').innerHTML=ic(dark?'sun':'moon',20)}
+const MESC=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+const WDF=['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
+const icc=(n,s,cls)=>ic(n,s).replace('class="ic"',`class="ic ${cls}"`);
+const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+const dayLabel=s=>s===todayISO()?'Hoje':s===addDays(todayISO(),1)?'Amanhã':WD[dt(s).getDay()];
+const dateLong=s=>{const d=dt(s);return `${cap(WDF[d.getDay()])}, ${d.getDate()} de ${MESC[d.getMonth()]}`};
+const waLinkC=()=>'https://wa.me/'+CLINIC.whats;
+const mapsUrl=()=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(CLINIC.address.replace(/ · /g,', '));
+
 function renderStatic(){
   $('#brandName').textContent=CLINIC.name;$('#brandMark').src=CLINIC.monogram;drawArch();
   $('#p1').innerHTML=ic('user',22);$('#p2').innerHTML=ic('shield',22);$('#p3').innerHTML=ic('leaf',22);
-  themeIcon();
+  $('#topWa').innerHTML=ic('wa',22);
+  $('#tabbar').innerHTML=[['inicio','Início','home'],['procedimentos','Serviços','list'],['agendar','Agendar','cal'],['meus-horarios','Horários','clock']]
+    .map(([k,l,i])=>`<a href="#${k}" data-nav="${k}"${k==='agendar'?' class="tab-main"':''}>${ic(i,22)}<span>${l}</span></a>`).join('')
+    +`<button type="button" data-act="more" aria-haspopup="dialog">${ic('menu',22)}<span>Mais</span></button>`;
 }
 function renderDyn(){
-  renderFoot();$('#mWa').href='https://wa.me/'+CLINIC.whats;{const cw=$('#ctaWa');if(cw)cw.href='https://wa.me/'+CLINIC.whats}
-  $('#facts').innerHTML=`<span>${ic('clock',16)}${esc(daysText())}</span><span>${ic('bell',16)}Lembrete 24 h antes</span><span>${ic('shield',16)}Dados protegidos (LGPD)</span>`;
-  const mapsUrl='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(CLINIC.address.replace(/ · /g,', '));
+  const wa=waLinkC();$('#topWa').href=wa;
+  $('#facts').innerHTML=`<li>${ic('clock',16)}${esc(daysText())}</li><li>${ic('pin',16)}Centro de Guaíra/PR</li>`;
+  $('#visit').innerHTML=`<div style="display:grid;gap:10px"><h2>Venha conhecer</h2>
+    <div class="visit-row">${ic('pin',20)}<p>${esc(CLINIC.address)}</p></div>
+    <div class="visit-row">${ic('clock',20)}<p>${esc(daysText())}</p></div></div>
+    <div class="visit-btns"><a class="btn wa" href="${wa}" target="_blank" rel="noopener">${ic('wa',18)} WhatsApp</a><a class="btn" href="${mapsUrl()}" target="_blank" rel="noopener">${ic('pin',18)} Como chegar</a></div>`;
   $('#infoList').innerHTML=`
-    <div>${ic('pin')}<p><b>Endereço</b><br>${esc(CLINIC.address)}<br><a href="${mapsUrl}" target="_blank" rel="noopener">Abrir no mapa</a></p></div>
-    <div>${ic('clock')}<p><b>Horário</b><br>${esc(daysText())}</p></div>
-    <div>${ic('phone')}<p><b>Telefone e WhatsApp</b><br><span class="tnum">${esc(CLINIC.phone)}</span></p></div>
-    ${CLINIC.email?`<div>${ic('mail')}<p><b>E-mail</b><br>${esc(CLINIC.email)}</p></div>`:''}
-    <div>${ic('heart')}<p><b>Instagram</b><br><a href="${CLINIC.instaUrl}" target="_blank" rel="noopener">${esc(CLINIC.insta)}</a></p></div>
-    <div><a class="btn primary" href="https://wa.me/${CLINIC.whats}" target="_blank" rel="noopener">Chamar no WhatsApp</a></div>`;
+    <div class="info-row">${ic('pin',20)}<div><b>Endereço</b><p class="muted">${esc(CLINIC.address)}</p></div></div>
+    <div class="info-row">${ic('clock',20)}<div><b>Horário de atendimento</b><p class="muted">${esc(daysText())}</p></div></div>
+    <div class="info-row">${ic('phone',20)}<div><b>Telefone e WhatsApp</b><p class="muted tnum">${esc(CLINIC.phone)}</p></div></div>
+    <div class="info-row">${ic('heart',20)}<div><b>Instagram</b><p><a href="${CLINIC.instaUrl}" target="_blank" rel="noopener">${esc(CLINIC.insta)}</a></p></div></div>
+    ${CLINIC.email?`<div class="info-row">${ic('mail',20)}<div><b>E-mail</b><p class="muted">${esc(CLINIC.email)}</p></div></div>`:''}
+    <div class="info-btns"><a class="btn wa" href="${wa}" target="_blank" rel="noopener">${ic('wa',18)} Chamar no WhatsApp</a><a class="btn" href="${mapsUrl()}" target="_blank" rel="noopener">${ic('pin',18)} Como chegar</a></div>`;
+  $('#sheetPanel').innerHTML=`<ul class="sheet-list">
+    ${[['#sobre','Sobre a Caren','user'],['#duvidas','Dúvidas frequentes','chat'],['#contato','Contato e endereço','pin'],['#meus-horarios','Meus horários','clock']].map(([h,l,i])=>`<li><a href="${h}">${ic(i,20)}<span>${l}</span>${icc('chevR',18,'go')}</a></li>`).join('')}
+    <li><a href="${wa}" target="_blank" rel="noopener">${ic('wa',20)}<span>Conversar no WhatsApp</span>${icc('external',16,'go')}</a></li>
+    <li><a href="${CLINIC.instaUrl}" target="_blank" rel="noopener">${ic('heart',20)}<span>Instagram</span>${icc('external',16,'go')}</a></li>
+    <li><a href="#painel">${ic('gear',20)}<span>Área da Caren</span>${icc('chevR',18,'go')}</a></li></ul>`;
+  renderFoot();
 }
 function drawArch(){
   const el=$('#arch');if(!el)return;
@@ -1105,144 +1122,159 @@ function drawArch(){
   paintArt(el);
 }
 function renderFoot(){
-  $('#footBody').innerHTML=`<div class="foot-grid">
-    <div><div class="fname">${esc(CLINIC.name)}</div><p class="small">${esc(CLINIC.tag)}<br>A riqueza da sua própria beleza lapidada na melhor versão.</p></div>
-    <div><h4>Navegar</h4><p class="small foot-links"><a href="#procedimentos">Procedimentos</a><a href="#agendar">Agendar</a><a href="#meus-horarios">Meus horários</a><a href="#sobre">Sobre</a><a href="#duvidas">Dúvidas</a><a href="#contato">Contato</a></p></div>
-    <div><h4>Contato</h4><p class="small tnum">${esc(CLINIC.phone)}${CLINIC.email?'<br>'+esc(CLINIC.email):''}<br><a href="${CLINIC.instaUrl}" target="_blank" rel="noopener">${esc(CLINIC.insta)}</a></p></div>
-    <div><h4>Atendimento</h4><p class="small">${esc(daysText())}<br>${esc(CLINIC.address)}</p></div></div>
-    <div class="foot-bot"><span>© ${new Date().getFullYear()} ${esc(CLINIC.name)}</span><a class="linkbtn" href="#painel">Área da Caren</a></div>`;
+  $('#footBody').innerHTML=`<div class="foot-brand"><b>${esc(CLINIC.name)}</b><span>${esc(CLINIC.tag)} · ${esc(CLINIC.address.split('·').pop().trim())}</span></div>
+    <nav class="foot-links" aria-label="Rodapé"><a href="#procedimentos">Procedimentos</a><a href="#agendar">Agendar</a><a href="#meus-horarios">Meus horários</a><a href="#sobre">Sobre</a><a href="#duvidas">Dúvidas</a><a href="#contato">Contato</a><a href="${CLINIC.instaUrl}" target="_blank" rel="noopener">Instagram</a></nav>
+    <div class="foot-bot"><span>© ${new Date().getFullYear()} ${esc(CLINIC.name)}</span><a href="#painel">Área da Caren</a></div>`;
 }
 const JOURNEYS=[
-  {name:'Primeira rotina',desc:'Do diagnóstico à pele limpa e hidratada.',items:['p1','p2','p3'],icon:'drop'},
-  {name:'Renovação da pele',desc:'Avaliação e microagulhamento.',items:['p1','p5'],icon:'sparkle'},
-  {name:'Firmeza e luminosidade',desc:'Sessões combinadas para o contorno do rosto.',items:['p6','p7'],icon:'wave'}
+  {name:'Primeira rotina',desc:'Do diagnóstico à pele limpa e hidratada.',items:['p1','p2','p3']},
+  {name:'Renovação da pele',desc:'Avaliação e microagulhamento.',items:['p1','p5']},
+  {name:'Firmeza e luminosidade',desc:'Sessões para o contorno do rosto.',items:['p6','p7']}
 ];
 function renderJourneys(){
-  $('#jGrid').innerHTML=JOURNEYS.map(j=>{
-    const it=j.items.map(id=>liveSvcs().find(x=>x.id===id)).filter(Boolean);if(it.length<2)return'';if(!it.length)return'';
-    const dur=it.reduce((a,x)=>a+x.dur,0),tot=it.reduce((a,x)=>a+x.price,0);
-    return `<article class="card jr"><div class="jr-top"><span class="jr-ic">${ic(j.icon,22)}</span><div><h3>${esc(j.name)}</h3><span class="muted small">${esc(j.desc)}</span></div></div>
-      <ol>${it.map(x=>`<li><span>${esc(x.name)}</span><span>${x.dur} min</span></li>`).join('')}</ol>
-      <div class="jr-foot"><div><span class="muted small">${it.length} sessões · ${Math.floor(dur/60)?Math.floor(dur/60)+' h ':''}${dur%60?dur%60+' min':''}</span><div class="price" style="font-family:var(--font-display);font-size:1.6rem;font-weight:600;color:var(--brand);line-height:1.1">${brl(tot)}</div></div><button class="btn sm primary" data-act="goBook" data-svc="${it[0].id}">Começar pela 1ª sessão</button></div></article>`}).join('');
+  const html=JOURNEYS.map(j=>{
+    const it=j.items.map(id=>liveSvcs().find(x=>x.id===id)).filter(Boolean);if(it.length<2)return'';
+    const tot=it.reduce((a,x)=>a+x.price,0);
+    return `<article class="combo"><div><h3>${esc(j.name)}</h3><p class="muted small">${esc(j.desc)}</p></div>
+      <div class="combo-items">${it.map((x,i)=>`<span>${i+1}. ${esc(x.name)}</span>`).join('')}</div>
+      <div class="combo-foot"><span><span class="muted small">${it.length} sessões · </span><span class="price">${brl(tot)}</span></span><button class="btn sm" data-act="goBook" data-svc="${it[0].id}">Agendar a 1ª sessão</button></div></article>`}).join('');
+  $('#jGrid').innerHTML=html;$('#jGrid').closest('section').hidden=!html;
 }
 function renderNow(){
-  const live=ADM.loaded&&S.appts.find(a=>a.date===todayISO()&&a.status==='atendimento');
-  if(!PUB.ready&&!ADM.loaded){$('#nowCard').innerHTML=`<h3><span class="dot"></span>Próximos horários livres</h3>${PUB.err?'<p class="muted small">Não foi possível carregar os horários agora.</p>':'<div class="skel"></div><div class="skel"></div><div class="skel"></div>'}`;return}
-  const sl=nextSlots(3);
-  $('#nowCard').innerHTML=`
-    <h3><span class="dot"></span>${live?`${esc(CLINIC.pro)} em atendimento agora`:'Próximos horários livres'}</h3>
-    ${sl.map(s=>`<div class="slot-row"><span><b>${rel(s.date)}</b> · <b>${fromMin(s.t)}</b></span><button class="btn sm primary" data-act="goSlot" data-d="${s.date}" data-t="${s.t}">Reservar</button></div>`).join('')||'<p class="muted small">Sem horários livres nos próximos dias. Chame a Caren no WhatsApp.</p>'}`;
+  const el=$('#nowCard');
+  if(!PUB.ready&&!ADM.loaded){el.innerHTML=PUB.err?'<p class="muted">Não foi possível carregar os horários agora.</p>':'<div class="skel slot-sk"></div>'.repeat(4);return}
+  const sl=nextSlots(8);
+  el.innerHTML=sl.map(s=>{const d=dt(s.date);return `<button class="slot" data-act="goSlot" data-d="${s.date}" data-t="${s.t}" aria-label="Reservar ${dateLong(s.date)} às ${fromMin(s.t)}"><small>${dayLabel(s.date)}, ${d.getDate()} ${MESC[d.getMonth()]}</small><strong>${fromMin(s.t)}</strong><span>Reservar</span></button>`}).join('')
+    ||`<p class="muted">Sem horários livres nos próximos dias. <a href="${waLinkC()}" target="_blank" rel="noopener">Fale com a Caren</a>.</p>`;
 }
-const svcCard=s=>`
-    <article class="card svc">
-      <div class="svc-band">${ic(catIc(s.cat),30)}<span class="tag">${esc(s.cat||'Procedimento')}</span></div>
-      <h3>${esc(s.name)}</h3>
-      <p class="muted small">${esc(s.desc)}</p>
-      <div class="meta"><span>${ic('clock',15)} ${s.dur} min</span></div>
-      ${s.prep?`<details class="note"><summary>Orientações de preparo</summary><p class="small muted" style="margin-top:6px">${esc(s.prep)}</p></details>`:''}
-      <div class="svc-foot"><span class="price">${brl(s.price)}</span><button class="btn sm primary" data-act="goBook" data-svc="${s.id}">Agendar ${ic('arrow',15)}</button></div>
-    </article>`;
-const skelCards=n=>[...Array(n)].map(()=>'<div class="card svc skel-card" aria-hidden="true"><div class="skel"></div><div class="skel w60"></div><div class="skel w80"></div></div>').join('');
+const svcRow=(s,full)=>!full?`<article class="svc compact"><span class="svc-ic">${ic(catIc(s.cat),22)}</span><h3>${esc(s.name)}</h3><p class="svc-meta"><span>${ic('clock',15)}${s.dur} min</span><span class="price">${brl(s.price)}</span></p><button class="btn sm primary" data-act="goBook" data-svc="${s.id}">Agendar</button></article>`:`<article class="svc"><span class="svc-ic">${ic(catIc(s.cat),22)}</span><h3>${esc(s.name)}</h3>
+  <p class="svc-meta"><span>${ic('clock',15)}${s.dur} min</span><span class="price">${brl(s.price)}</span></p>
+  ${full&&s.desc?`<p class="svc-desc">${esc(s.desc)}</p>`:''}
+  <div class="svc-foot">${full&&s.prep?`<details class="svc-prep"><summary>Como se preparar</summary><p>${esc(s.prep)}</p></details>`:`<span class="muted small">${esc(s.cat||'')}</span>`}<button class="btn sm primary" data-act="goBook" data-svc="${s.id}">Agendar</button></div></article>`;
+const skelRows=n=>'<div class="skel row-sk"></div>'.repeat(n);
 function renderHome(){
   const el=$('#homeFeat');if(!el)return;
-  if(!S.services.length){el.innerHTML=PUB.err?'<p class="muted">Não foi possível carregar os procedimentos agora.</p>':skelCards(3);return}
+  if(!S.services.length){el.innerHTML=PUB.err?'<p class="muted">Não foi possível carregar os procedimentos agora.</p>':skelRows(3);return}
   const pref=['p8','p2','p3'],l=liveSvcs(),pick=pref.map(id=>l.find(s=>s.id===id)).filter(Boolean);
   l.forEach(s=>{if(pick.length<3&&!pick.includes(s))pick.push(s)});
-  el.innerHTML=pick.slice(0,3).map(svcCard).join('');
+  el.innerHTML=pick.slice(0,3).map(s=>svcRow(s,false)).join('');
 }
 function renderServices(){
-  $('#catChips').innerHTML=['Todos',...new Set(liveSvcs().map(s=>s.cat).filter(Boolean))].map(c=>`<button class="chip" data-act="cat" data-v="${esc(c)}" aria-pressed="${ui.cat===c}">${esc(c)}</button>`).join('');
-  if(ui.cat!=='Todos'&&!liveSvcs().some(s=>s.cat===ui.cat))ui.cat='Todos';const l=liveSvcs().filter(s=>ui.cat==='Todos'||s.cat===ui.cat);
-  if(!S.services.length){$('#svcGrid').innerHTML=PUB.err?'<p class="muted">Não foi possível carregar os procedimentos agora.</p>':skelCards(6);return}
-  $('#svcGrid').innerHTML=l.map(s=>`
-    <article class="card svc">
-      <div class="svc-band">${ic(catIc(s.cat),30)}<span class="tag">${esc(s.cat||'Procedimento')}</span></div>
-      <h3>${esc(s.name)}</h3>
-      <p class="muted small">${esc(s.desc)}</p>
-      <div class="meta"><span>${ic('clock',15)} ${s.dur} min</span></div>
-      ${s.prep?`<details class="note"><summary>Orientações de preparo</summary><p class="small muted" style="margin-top:6px">${esc(s.prep)}</p></details>`:''}
-      <div class="svc-foot"><span class="price">${brl(s.price)}</span><button class="btn sm primary" data-act="goBook" data-svc="${s.id}">Agendar ${ic('arrow',15)}</button></div>
-    </article>`).join('')||'<div class="empty">Nenhum procedimento cadastrado.</div>';
+  const cats=['Todos',...new Set(liveSvcs().map(s=>s.cat).filter(Boolean))];
+  if(!cats.includes(ui.cat))ui.cat='Todos';
+  $('#catChips').innerHTML=S.services.length?cats.map(c=>`<button class="chip" data-act="cat" data-v="${esc(c)}" aria-pressed="${ui.cat===c}">${esc(c)}</button>`).join(''):'';
+  if(!S.services.length){$('#svcGrid').innerHTML=PUB.err?'<p class="muted">Não foi possível carregar os procedimentos agora.</p>':skelRows(4);return}
+  const l=liveSvcs().filter(s=>ui.cat==='Todos'||s.cat===ui.cat);
+  $('#svcGrid').innerHTML=l.map(s=>svcRow(s,true)).join('')||'<div class="empty">Nenhum procedimento nesta categoria.</div>';
 }
 
-/* ---------- render: agendamento ---------- */
-const STEPS=['Procedimento','Horário','Seus dados'];
-function summary(){
-  const sv=svc(book.svc);
-  return `<div class="summary"><div>${ic('check',16)}<b>${esc(sv.name)}</b><span class="muted">· ${sv.dur} min · ${brl(sv.price)}</span></div>${book.date&&book.time!=null?`<div>${ic('cal',16)}${rel(book.date)}, ${fromMin(book.time)}</div>`:''}</div>`;
-}
-function gcalLink(a){const sv=svc(a.svcId),d=a.date.replace(/-/g,''),st=d+'T'+a.time.replace(':','')+'00',en=d+'T'+fromMin(toMin(a.time)+sv.dur).replace(':','')+'00';return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(sv.name+' · '+CLINIC.name)}&dates=${st}/${en}&details=${encodeURIComponent(sv.prep||'')}&location=${encodeURIComponent(CLINIC.address)}&ctz=America/Sao_Paulo`}
+/* ---------- agendamento ---------- */
+const STEPS=['Procedimento','Dia e horário','Seus dados'];
+function gcalLink(a){const sv=svc(a.svcId),d=a.date.replace(/-/g,''),st=d+'T'+a.time.replace(':','')+'00',en=d+'T'+fromMin(toMin(a.time)+(a.dur||sv.dur)).replace(':','')+'00';return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(sv.name+' · '+CLINIC.name)}&dates=${st}/${en}&details=${encodeURIComponent((sv.prep||'')+(a.code?' Código: '+a.code:''))}&location=${encodeURIComponent(CLINIC.address)}&ctz=America/Sao_Paulo`}
+function bar(html){const b=$('#flowBar');if(!html){b.hidden=true;b.innerHTML='';return}b.hidden=false;b.innerHTML=`<div class="wrap flowbar-in">${html}</div>`}
 function renderBook(){
-  const st=book.done?4:book.step;
-  const labels=book.resched?['Procedimento','Novo horário','Confirmar']:STEPS;
-  $('#stepper').innerHTML=labels.map((s,i)=>`<div class="${st===i+1?'on':''} ${st>i+1?'done':''}"><b>${st>i+1?ic('check',13):i+1}</b>${s}</div>`).join('');
-  const el=$('#bookBody');
-  if(!PUB.ready&&!ADM.loaded){el.innerHTML=PUB.err?`<div class="empty">Não foi possível carregar a agenda agora. <button class="btn sm" data-act="retryLoad">Tentar de novo</button> ou <a href="https://wa.me/${CLINIC.whats}" target="_blank" rel="noopener">chame no WhatsApp</a>.</div>`:'<div class="skel"></div><div class="skel w60"></div><div class="skel w80"></div>';return}
-  if(book.done){const a=book.done,sv=svc(a.svcId);
-    el.innerHTML=`<div class="ok-box">
-      <div class="tick">${ic('check',28)}</div>
-      <h3 style="font-family:var(--font-display);font-size:2rem;font-weight:600">${book.resched?'Horário remarcado':'Horário reservado'}</h3>
-      <div class="code">${esc(a.code)}</div>
-      <p class="muted small">Guarde este código: com ele e o seu telefone você consulta, remarca ou cancela em Meus horários.</p>
-      <div class="summary" style="text-align:left;width:min(100%,420px)">
-        <div>${ic('check',16)}<b>${esc(sv.name)}</b></div>
-        <div>${ic('cal',16)}${rel(a.date)}, ${a.time} · ${sv.dur} min</div>
-        <div>${ic('bell',16)}Lembrete 24 h antes por ${CH[a.channel]}</div>
-      </div>
-      ${sv.prep?`<div class="prep"><b>Para se preparar:</b> ${esc(sv.prep)}</div>`:''}
-      <div class="cta-row" style="justify-content:center"><a class="btn" href="${gcalLink(a)}" target="_blank" rel="noopener">${ic('gcal',16)} Adicionar ao Google Agenda</a><button class="btn primary" data-act="viewMine" data-phone="${esc(a.phone)}" data-code="${esc(a.code)}">Ver meus agendamentos</button><button class="btn" data-act="bookReset">Novo agendamento</button></div>
-    </div>`;return}
-  const banner=book.resched?`<div class="banner">Remarcando ${esc(book.resched.code)} · ${rel(book.resched.date)}, ${book.resched.time}</div>`:'';
+  const top=$('#stepper'),el=$('#bookBody');
+  if(book.done){top.innerHTML='';bar('');el.innerHTML=doneHTML();return}
+  const st=book.step;
+  if(!PUB.ready&&!ADM.loaded){top.innerHTML='<h1>Agendar horário</h1>';bar('');
+    el.innerHTML=PUB.err?`<div class="empty">Não foi possível carregar a agenda agora.<button class="btn sm" data-act="retryLoad">Tentar de novo</button><a href="${waLinkC()}" target="_blank" rel="noopener">ou chame a Caren no WhatsApp</a></div>`:skelRows(4);return}
+  const title=book.resched?'Escolha o novo horário':st===1?'Qual procedimento?':st===2?'Escolha o dia e o horário':'Seus dados';
+  top.innerHTML=`<div class="steps" aria-hidden="true">${[1,2,3].map(i=>`<i class="${i<=(book.resched?2:st)?'on':''}"></i>`).join('')}</div><p class="step-lbl">${book.resched?'Remarcar horário':`Passo ${st} de 3 · ${STEPS[st-1]}`}</p><h1>${title}</h1>`;
+  const banner=book.resched?`<div class="banner">Você está remarcando <b>${esc(svc(book.resched.svcId).name)}</b> de ${dateLong(book.resched.date).toLowerCase()} às ${book.resched.time}.</div>`:'';
   if(st===1){
     const cats=[...new Set(liveSvcs().map(s=>s.cat))];
-    el.innerHTML=`${banner}${cats.map(c=>`<div class="group-title">${esc(c||'Outros')}</div><div class="opts">${liveSvcs().filter(s=>s.cat===c).map(s=>`<button class="opt" data-act="bookSvc" data-id="${s.id}" aria-pressed="${book.svc===s.id}"><span class="opt-ic">${ic(catIc(s.cat),20)}</span><span><b>${esc(s.name)}</b><span class="muted small" style="display:block">${s.dur} min · ${brl(s.price)}</span></span></button>`).join('')}</div>`).join('')}`;
-  }else if(st===2){
-    const dates=[...Array(28)].map((_,i)=>addDays(todayISO(),i)),ig=book.resched&&(ADM.loaded?book.resched.id:book.resched.date+'|'+book.resched.time),map={};dates.forEach(d=>map[d]=freeTimes(d,svc(book.svc).dur,ig));
+    el.innerHTML=`<p class="muted" style="margin-top:6px">Toque para escolher. Na dúvida, comece pela avaliação: ela não tem custo.</p>`+cats.map(c=>`<p class="grp">${esc(c||'Outros')}</p><div class="pick">${liveSvcs().filter(s=>s.cat===c).map(s=>`<button class="pick-it" data-act="bookSvc" data-id="${s.id}" aria-pressed="${book.svc===s.id}"><span class="pick-ic">${ic(catIc(s.cat),20)}</span><span><b>${esc(s.name)}</b><small>${s.dur} min · ${brl(s.price)}</small></span>${icc('chevR',20,'go')}</button>`).join('')}</div>`).join('');
+    bar('');return;
+  }
+  const sv=svc(book.svc);
+  if(st===2){
+    const dates=[...Array(30)].map((_,i)=>addDays(todayISO(),i)),ig=book.resched&&(ADM.loaded?book.resched.id:book.resched.date+'|'+book.resched.time),map={};
+    dates.forEach(d=>map[d]=freeTimes(d,sv.dur,ig));
     if(book.pref&&!book.date){const p=book.pref;if(map[p.date]&&map[p.date].includes(p.t)){book.date=p.date;book.time=p.t}book.pref=null}
     if(!book.date||!map[book.date]||!map[book.date].length){book.date=dates.find(d=>map[d].length)||null;book.time=null}
     const slots=book.date?map[book.date]:[];
-    const grp=(lab,f)=>{const l=slots.filter(f);return l.length?`<div class="slot-grp"><span class="lbl">${lab}</span><div class="times">${l.map(t=>`<button class="time" data-act="bookTime" data-t="${t}" aria-pressed="${book.time===t}">${fromMin(t)}</button>`).join('')}</div></div>`:''};
-    el.innerHTML=`${banner}${summary()}<h3>Escolha o dia</h3>
-      <div class="dates" role="group" aria-label="Dias">${dates.map(d=>{const o=dt(d);return`<button class="date" data-act="bookDate" data-v="${d}" aria-pressed="${book.date===d}" ${map[d].length?'':'disabled'}><small>${WD[o.getDay()]}</small><b>${o.getDate()}</b><small>${pad(o.getMonth()+1)}/${String(o.getFullYear()).slice(2)}</small></button>`}).join('')}</div>
-      ${book.date?`<h3>Horários livres · ${rel(book.date).toLowerCase()}</h3>${grp('Manhã',t=>t<720)}${grp('Tarde',t=>t>=720&&t<1080)}${grp('Noite',t=>t>=1080)}`:`<div class="empty">Sem horários livres nos próximos 28 dias para este procedimento. Deixe seu contato na lista de espera.</div>
-      <form class="form" id="waitForm" novalidate><div class="field"><label for="wName">Nome</label><input class="input" id="wName" name="name" autocomplete="name"></div><div class="field"><label for="wPhone">Telefone / WhatsApp</label><input class="input" id="wPhone" name="phone" inputmode="tel" autocomplete="tel"></div><div class="full"><button class="btn primary" type="submit">Entrar na lista de espera</button></div></form>`}
-      ${book.err?`<div class="err" role="alert">${esc(book.err)}</div>`:''}<div class="nav-row">${book.resched?'<button class="btn" data-act="bookReset">Cancelar remarcação</button>':'<button class="btn" data-act="bookBack">Voltar</button>'}${book.time!=null?`<button class="btn primary" data-act="bookNext" ${PUB.sending?'disabled':''}>${book.resched?(PUB.sending?'Remarcando…':'Confirmar novo horário'):'Continuar'} ${ic('arrow',16)}</button>`:''}</div>`;
-  }else{
-    const f=book.form;
-    el.innerHTML=`${banner}${summary()}
-      <form class="form" id="bookForm" novalidate>
-        <div class="field"><label for="fName">Nome completo</label><input class="input" id="fName" name="name" autocomplete="name" value="${esc(f.name)}"></div>
-        <div class="field"><label for="fPhone">Telefone / WhatsApp</label><input class="input" id="fPhone" name="phone" inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" value="${esc(f.phone)}"></div>
-        <div class="field"><label for="fEmail">E-mail (opcional)</label><input class="input" id="fEmail" name="email" type="email" autocomplete="email" value="${esc(f.email)}"></div>
-        <div class="field"><label for="fCh">Receber lembrete por</label><select class="input" id="fCh" name="channel">${Object.entries(CH).map(([k,v])=>`<option value="${k}" ${f.channel===k?'selected':''}>${v}</option>`).join('')}</select></div>
-        <label class="check full"><input type="checkbox" name="gest" ${f.gest?'checked':''}><span>Estou gestante ou amamentando.</span></label>
-        <div class="field full"><label for="fHealth">Alergias, medicamentos ou condições de saúde (opcional)</label><textarea class="input" id="fHealth" name="health" placeholder="Ex.: alergia a fragrâncias, uso de anticoncepcional, pele sensível">${esc(f.health)}</textarea></div>
-        <label class="check full"><input type="checkbox" name="consent" ${f.consent?'checked':''}><span>Autorizo o uso dos meus dados, inclusive os de saúde informados acima, para o atendimento e o envio de lembretes (LGPD).</span></label>
-        ${book.err?`<div class="err full" role="alert">${esc(book.err)}</div>`:''}
-        <div class="nav-row full"><button class="btn" type="button" data-act="bookBack">Voltar</button><button class="btn primary" type="submit" ${PUB.sending?'disabled':''}>${PUB.sending?'Enviando…':'Confirmar agendamento'}</button></div>
-      </form>`;
+    const grp=(lab,f)=>{const l=slots.filter(f);return l.length?`<div class="tgrp"><span class="lbl">${lab}</span><div class="times">${l.map(t=>`<button class="time" data-act="bookTime" data-t="${t}" aria-pressed="${book.time===t}">${fromMin(t)}</button>`).join('')}</div></div>`:''};
+    el.innerHTML=`${banner}<div class="chosen"><span class="pick-ic">${ic(catIc(sv.cat),20)}</span><div><b>${esc(sv.name)}</b><small>${sv.dur} min · ${brl(sv.price)}</small></div>${book.resched?'':'<button class="linkbtn" data-act="bookBack">Trocar</button>'}</div>
+      ${book.date?`<h2 class="q">Dia</h2><div class="dates" role="group" aria-label="Dias">${dates.map(d=>{const o=dt(d);return `<button class="date" data-act="bookDate" data-v="${d}" aria-pressed="${book.date===d}" ${map[d].length?'':'disabled'} aria-label="${dateLong(d)}"><small>${d===todayISO()?'hoje':WD[o.getDay()]}</small><b>${o.getDate()}</b><small>${MESC[o.getMonth()]}</small></button>`}).join('')}</div>
+      <h2 class="q">Horário <span class="muted small">· ${dateLong(book.date).toLowerCase()}</span></h2>${grp('Manhã',t=>t<720)}${grp('Tarde',t=>t>=720&&t<1080)}${grp('Noite',t=>t>=1080)}`
+      :`<div class="empty" style="margin-top:18px">Não há horários livres para este procedimento nos próximos 30 dias. Deixe seu contato e a Caren avisa quando abrir uma vaga.</div>
+      <form class="bform" id="waitForm" novalidate><div class="field"><label for="wName">Nome</label><input class="input" id="wName" name="name" autocomplete="name"></div><div class="field"><label for="wPhone">WhatsApp</label><input class="input" id="wPhone" name="phone" inputmode="tel" autocomplete="tel" placeholder="(44) 99999-9999"></div><button class="btn primary block" type="submit">Entrar na lista de espera</button></form>`}
+      ${book.err?`<p class="err" role="alert" style="margin-top:14px">${esc(book.err)}</p>`:''}`;
+    const sel=el.querySelector('.date[aria-pressed="true"]');if(sel)sel.scrollIntoView({block:'nearest',inline:'center'});
+    bar(`<button class="btn icon-btn" data-act="${book.resched?'reschCancel':'bookBack'}" aria-label="${book.resched?'Cancelar remarcação':'Voltar'}">${ic(book.resched?'x':'chevL',20)}</button>
+      <div class="sum">${book.time!=null?`<b>${dayLabel(book.date)}, ${dt(book.date).getDate()} ${MESC[dt(book.date).getMonth()]} · ${fromMin(book.time)}</b>${esc(sv.name)}`:`<b>Escolha um horário</b>${esc(sv.name)}`}</div>
+      <button class="btn primary" data-act="bookNext" ${book.time==null||PUB.sending?'disabled':''}>${book.resched?(PUB.sending?'Remarcando…':'Confirmar'):'Continuar'}</button>`);
+    return;
   }
+  const f=book.form;
+  el.innerHTML=`<div class="recap">
+      <div class="recap-row">${ic(catIc(sv.cat),20)}<div><b>${esc(sv.name)}</b><p class="muted small">${sv.dur} min · ${brl(sv.price)}</p></div></div>
+      <div class="recap-row">${ic('cal',20)}<div><b>${dateLong(book.date)}</b><p class="muted small">às ${fromMin(book.time)}</p></div></div>
+      <button class="linkbtn recap-edit" data-act="bookBack">Alterar dia ou horário</button></div>
+    <form class="bform" id="bookForm" novalidate>
+      <div class="field"><label for="fName">Nome completo</label><input class="input" id="fName" name="name" autocomplete="name" value="${esc(f.name)}" maxlength="120"></div>
+      <div class="field"><label for="fPhone">WhatsApp</label><input class="input" id="fPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(44) 99999-9999" value="${esc(f.phone)}" maxlength="20"><span class="muted small">A Caren confirma e manda o lembrete por aqui.</span></div>
+      <div class="field"><label for="fEmail">E-mail <span class="opt-lbl">(opcional)</span></label><input class="input" id="fEmail" name="email" type="email" inputmode="email" autocomplete="email" value="${esc(f.email)}" maxlength="120"></div>
+      <label class="check"><input type="checkbox" name="gest" ${f.gest?'checked':''}><span>Estou grávida ou amamentando</span></label>
+      <label class="check"><input type="checkbox" name="hasHealth" ${f.hasHealth?'checked':''}><span>Tenho alergia, uso algum medicamento ou tenho pele sensível</span></label>
+      ${f.hasHealth?`<div class="field"><label for="fHealth">Conte para a Caren</label><textarea class="input" id="fHealth" name="health" maxlength="1000" placeholder="Ex.: alergia a fragrâncias, uso de ácido no rosto">${esc(f.health)}</textarea></div>`:''}
+      <label class="check"><input type="checkbox" name="consent" ${f.consent?'checked':''}><span>Concordo com o uso dos meus dados para este atendimento e para receber o lembrete (LGPD).</span></label>
+      ${book.err?`<p class="err" role="alert">${esc(book.err)}</p>`:''}
+    </form>`;
+  bar(`<button class="btn icon-btn" data-act="bookBack" aria-label="Voltar">${ic('chevL',20)}</button>
+    <div class="sum"><b>${sv.price?brl(sv.price):'Sem custo'}</b>${sv.price?'pago no atendimento':'avaliação gratuita'}</div>
+    <button class="btn primary" type="submit" form="bookForm" ${PUB.sending?'disabled':''}>${PUB.sending?'Enviando…':'Confirmar'}</button>`);
 }
+function doneHTML(){
+  const a=book.done,sv=svc(a.svcId),first=(a.name||book.form.name||'').trim().split(' ')[0];
+  const msg=`Olá, Caren! ${book.resched?'Remarquei':'Agendei'} ${sv.name} para ${fmtD(a.date)} às ${a.time} pelo site. Código ${a.code}.${first?' Nome: '+(a.name||book.form.name).trim()+'.':''}`;
+  return `<div class="done">
+    <div class="tick">${ic('check',34)}</div>
+    <h1>${book.resched?'Horário remarcado':'Horário reservado!'}</h1>
+    <p class="muted">${first?esc(first)+', te':'Te'} esperamos ${relLongPub(a.date)} às ${a.time}.</p>
+    <div class="recap"><div class="recap-row">${ic(catIc(sv.cat),20)}<div><b>${esc(sv.name)}</b><p class="muted small">${a.dur||sv.dur} min · ${brl(a.price!=null?a.price:sv.price)}</p></div></div>
+      <div class="recap-row">${ic('cal',20)}<div><b>${dateLong(a.date)}</b><p class="muted small">às ${a.time}</p></div></div>
+      <div class="recap-row">${ic('pin',20)}<div><p class="small">${esc(CLINIC.address)}</p></div></div></div>
+    <div class="code-box"><small>Seu código</small><strong>${esc(a.code)}</strong><button class="linkbtn small" data-act="copyCode" data-v="${esc(a.code)}">Copiar código</button></div>
+    <p class="small muted">Com o código e o seu telefone você consulta, remarca ou cancela em Meus horários.</p>
+    ${sv.prep?`<div class="prep"><b>Como se preparar:</b> ${esc(sv.prep)}</div>`:''}
+    <div class="done-btns"><a class="btn wa" href="https://wa.me/${CLINIC.whats}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">${ic('wa',18)} Avisar a Caren</a><a class="btn" href="${gcalLink(a)}" target="_blank" rel="noopener">${ic('gcal',18)} Salvar na agenda</a></div>
+    <button class="btn primary block" data-act="viewMine" data-phone="${esc(a.phone)}" data-code="${esc(a.code)}">Ver meus horários</button>
+    <button class="linkbtn" data-act="bookReset">Agendar outro horário</button></div>`;
+}
+const relLongPub=s=>{if(s===todayISO())return 'hoje';if(s===addDays(todayISO(),1))return 'amanhã';const d=dt(s);return `no dia ${d.getDate()} de ${MES[d.getMonth()]}`};
 
-
+/* ---------- meus horários ---------- */
+function apptCard(a){
+  const sv=svc(a.svcId),d=dt(a.date),past=!(a.date>=todayISO()&&isLive(a)),canEdit=!past&&(a.status==='agendada'||a.status==='confirmada');
+  return `<article class="appt${past?' past':''}"><div class="appt-date"><small>${WD[d.getDay()]}</small><strong>${pad(d.getDate())}</strong><small>${MESC[d.getMonth()]}</small></div>
+    <h3>${esc(sv.name)}</h3><p class="appt-meta"><span class="tnum">${a.time}</span><span>${aDur(a)} min</span><span>${brl(aPrice(a))}</span>${chipSt(a.status)}</p>
+    ${canEdit?(ui.confirm===a.id?`<div class="appt-confirm"><span>Cancelar este horário? Ele fica livre para outra pessoa.</span><div><button class="btn sm danger" data-act="cancelYes" data-id="${a.id}">Sim, cancelar</button><button class="btn sm" data-act="cancelNo">Manter</button></div></div>`
+      :`<div class="appt-acts"><button class="btn sm" data-act="resched" data-id="${a.id}">Remarcar</button><button class="btn sm danger-out" data-act="cancelAsk" data-id="${a.id}">Cancelar</button></div>`):''}
+  </article>`;
+}
+function viewClient(){
+  if(!PUB.mineList)return `<form class="look" id="lookupForm" novalidate>
+    <h2 style="font-size:1.4rem">Encontre seus horários</h2>
+    <div class="field"><label for="lkP">Telefone usado no agendamento</label><input class="input" id="lkP" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(44) 99999-9999" value="${esc(PUB.mine&&PUB.mine.phone||'')}"></div>
+    <div class="field"><label for="lkC">Código do agendamento</label><input class="input" id="lkC" name="code" autocomplete="off" autocapitalize="characters" placeholder="CC-3F9A2B" value="${esc(PUB.mine&&PUB.mine.code||'')}"></div>
+    ${PUB.mineErr?`<p class="err" role="alert">${esc(PUB.mineErr)}</p>`:''}
+    <button class="btn primary block" type="submit">Ver meus horários</button>
+    <p class="muted">O código aparece na confirmação do agendamento. Perdeu? <a href="${waLinkC()}" target="_blank" rel="noopener">Chame a Caren no WhatsApp</a>.</p></form>`;
+  const mine=PUB.mineList.slice().sort(byDT),name=((mine[0]&&mine[0].name)||'').split(' ')[0];
+  const up=mine.filter(a=>a.date>=todayISO()&&isLive(a)),past=mine.filter(a=>!up.includes(a)).reverse().slice(0,10);
+  return `<div class="mine-head"><h2 style="font-size:1.5rem">Olá${name?', '+esc(name):''}</h2><button class="linkbtn" data-act="logout">Sair</button></div>
+    <div class="appts">${up.map(apptCard).join('')||'<div class="empty">Você não tem horários marcados.</div>'}</div>
+    <a class="btn primary block" href="#agendar" data-act="goBook" style="margin-top:16px">Agendar novo horário</a>
+    ${past.length?`<h2 class="sub-t">Histórico</h2><div class="appts">${past.map(apptCard).join('')}</div>`:''}`;
+}
+function renderPortal(){$('#portalBody').innerHTML=viewClient()}
 
 /* ---------- portal da cliente ---------- */
 const LIVE=['agendada','confirmada','aguardando','atendimento'];
 const isLive=a=>LIVE.includes(a.status);
 const byDT=(a,b)=>(a.date+a.time).localeCompare(b.date+b.time);
 const chipSt=s=>`<span class="st st-${s}">${ST[s]}</span>`;
-function apptRow(a){
-  const sv=svc(a.svcId),canEdit=(a.status==='agendada'||a.status==='confirmada')&&a.date>=todayISO();
-  let acts='';
-  if(canEdit)acts+=`<button class="btn sm" data-act="resched" data-id="${a.id}">Remarcar</button>`;
-  if(canEdit)acts+=ui.confirm===a.id?`<span class="small">Cancelar este horário?</span><button class="btn sm danger" data-act="cancelYes" data-id="${a.id}">Sim, cancelar</button><button class="btn sm" data-act="cancelNo">Voltar</button>`:`<button class="btn sm danger-out" data-act="cancelAsk" data-id="${a.id}">Cancelar</button>`;
-  if(isLive(a)&&sv.prep)acts+=`<details class="note" style="flex-basis:100%"><summary>Orientações de preparo</summary><p class="small muted" style="margin-top:6px">${esc(sv.prep)}</p></details>`;
-  return `<div class="row">
-    <div class="when">${esc(a.time)}<small>${rel(a.date)}</small></div>
-    <div class="info"><b>${esc(sv.name)}</b><span class="muted small">${aDur(a)} min · ${brl(aPrice(a))}</span><div style="margin-top:4px">${chipSt(a.status)} <span class="muted small tnum">${esc(a.code)}</span></div></div>
-    ${acts?`<div class="acts">${acts}</div>`:''}
-  </div>`;
-}
 const mineIn=r=>({id:r.id,code:r.code,name:r.name,svcId:r.svc,dur:r.dur,price:+r.price,date:r.date,time:r.time,status:r.status});
 async function loadMine(phone,code){
   const r=await sb.rpc('my_appointments',{p_phone:phone,p_code:code});
@@ -1252,22 +1284,6 @@ async function loadMine(phone,code){
   try{localStorage.setItem('caren-mine',JSON.stringify(PUB.mine))}catch(e){}
   return true;
 }
-function viewClient(){
-  if(!PUB.mineList)return `<form class="card form" id="lookupForm" style="max-width:600px" novalidate>
-    <div class="field"><label for="lkP">Telefone usado no agendamento</label><input class="input" id="lkP" name="phone" inputmode="tel" autocomplete="tel" placeholder="(44) 99999-9999"></div>
-    <div class="field"><label for="lkC">Código do agendamento</label><input class="input" id="lkC" name="code" autocomplete="off" placeholder="CC-3F9A2B" style="text-transform:uppercase"></div>
-    ${PUB.mineErr?`<div class="err full" role="alert">${esc(PUB.mineErr)}</div>`:''}
-    <div class="full"><button class="btn primary" type="submit">Ver meus horários</button></div>
-    <p class="muted small full">O código aparece na tela de confirmação do agendamento. Perdeu? <a href="https://wa.me/${CLINIC.whats}" target="_blank" rel="noopener">Chame a Caren no WhatsApp</a>.</p></form>`;
-  const mine=PUB.mineList.slice().sort(byDT);
-  const up=mine.filter(a=>a.date>=todayISO()&&isLive(a)),past=mine.filter(a=>!up.includes(a)).reverse().slice(0,8);
-  return `<div class="tools"><span class="muted">Olá, <b>${esc((mine[0]&&mine[0].name||'').split(' ')[0])}</b>. Estes são os seus horários.</span><button class="btn sm" data-act="logout">Sair</button><a class="btn sm primary" href="#agendar" data-act="goBook">Novo agendamento</a></div>
-    <h2 class="h3" style="margin-bottom:10px">Próximos</h2>
-    <div class="rows">${up.map(apptRow).join('')||'<div class="empty">Nenhum horário marcado. <a href="#agendar">Agende o próximo</a>.</div>'}</div>
-    ${past.length?`<h2 class="h3" style="margin:22px 0 10px">Histórico</h2><div class="rows">${past.map(apptRow).join('')}</div>`:''}`;
-}
-function renderPortal(){$('#portalBody').innerHTML=viewClient()}
-
 /* ---------- área da Caren ---------- */
 const MES=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
 const WDL=['domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado'];
@@ -1672,16 +1688,18 @@ function setStep(a,to){
   if(to==='concluida'&&aPrice(a)&&a.pay.st!=='pago'){A.dr={t:'appt',id:a.id,pay:true};A.flash={id:a.id,txt:'Atendimento concluído. Registre o pagamento abaixo.',k:'after'}}
 }
 const actions={
-  theme(){const r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;r.dataset.theme=dark?'light':'dark';themeIcon()},
+  more(){const sh=$('#sheet');sh.hidden=!sh.hidden},
+  copyCode(d){const done=()=>toast('Código copiado');navigator.clipboard&&navigator.clipboard.writeText(d.v).then(done,()=>toast('Código: '+d.v))||toast('Código: '+d.v)},
+  reschCancel(){book=newBook();renderBook();location.hash='#meus-horarios'},
   cat(d){ui.cat=d.v;renderServices()},
   goBook(d){book=newBook();if(d.svc){book.svc=d.svc;book.step=2}renderBook();go('#agendar');refreshBusy().then(renderBook,()=>{})},
   goSlot(d){book=newBook();book.pref={date:d.d,t:+d.t};renderBook();go('#agendar');toast('Agora escolha o procedimento para reservar esse horário')},
-  bookSvc(d){book.svc=d.id;book.date=null;book.time=null;book.step=2;renderBook()},
-  bookDate(d){book.date=d.v;book.time=null;renderBook()},
-  bookTime(d){book.time=+d.t;renderBook()},
+  bookSvc(d){book.svc=d.id;book.date=null;book.time=null;book.step=2;book.err='';renderBook();scrollTo({top:0})},
+  bookDate(d){book.date=d.v;book.time=null;book.err='';renderBook()},
+  bookTime(d){book.time=+d.t;book.err='';renderBook()},
   bookNext(){if(book.resched){submitResched();return}book.step=3;book.err='';renderBook();scrollTo({top:0})},
-  bookBack(){book.step=Math.max(1,book.step-1);renderBook()},
-  bookReset(){book=newBook();renderBook()},
+  bookBack(){if(book.resched){actions.reschCancel();return}book.step=Math.max(1,book.step-1);book.err='';renderBook();scrollTo({top:0})},
+  bookReset(){book=newBook();renderBook();scrollTo({top:0})},
   retryLoad(){PUB.err=false;renderBook();pubLoad()},
   viewMine(d){loadMine(d.phone,d.code).then(()=>{renderPortal();go('#meus-horarios')})},
   role(d){location.hash=d.v==='caren'?'#painel':'#inicio'},
@@ -1757,7 +1775,7 @@ document.addEventListener('click',e=>{
   }
   const t=e.target.closest('[data-act]');if(!t)return;const f=actions[t.dataset.act];if(f)f(t.dataset,t,e);
 });
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(A.dr){actions.drClose()}else if(A.menu)actions.aMenu()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!$('#sheet').hidden)actions.more();else if(A.dr){actions.drClose()}else if(A.menu)actions.aMenu()}});
 document.addEventListener('change',e=>{
   const t=e.target;
   if(t.dataset.af){const a=find(t.dataset.id);if(!a)return;a[t.dataset.af]=t.type==='checkbox'?t.checked:t.value;save();toast('Salvo');return}
@@ -1771,7 +1789,7 @@ document.addEventListener('change',e=>{
 });
 document.addEventListener('input',e=>{
   const t=e.target;
-  if(t.closest('#bookForm')&&t.name){book.form[t.name]=t.type==='checkbox'?t.checked:t.value;return}
+  if(t.closest('#bookForm')&&t.name){book.form[t.name]=t.type==='checkbox'?t.checked:t.value;if(t.name==='hasHealth'){renderBook();if(t.checked){const h=$('#fHealth');if(h)h.focus()}}return}
   if(t.dataset.aq){A.q=t.value;$('#cliRows').innerHTML=cliRows();return}
   if(t.dataset.nf&&t.type!=='checkbox'){A.nf[t.dataset.nf]=t.value;
     if(t.dataset.nf==='name'){const c=clientIndex().find(x=>x.name===t.value);if(c){A.nf.phone=c.phone;A.nf.email=c.email;$('#nfPhone').value=c.phone;$('#nfEmail').value=c.email}}}
@@ -1865,14 +1883,14 @@ async function submitBook(){
   else book.err='';
   if(book.err||PUB.sending){renderBook();return}
   PUB.sending=true;renderBook();
-  const r=await sb.rpc('book_appointment',{p_svc:book.svc,p_date:book.date,p_time:fromMin(book.time),p_name:v.name.trim(),p_phone:v.phone.trim(),p_email:v.email.trim(),p_channel:v.channel,p_gest:!!v.gest,p_health:v.health.trim()});
+  const r=await sb.rpc('book_appointment',{p_svc:book.svc,p_date:book.date,p_time:fromMin(book.time),p_name:v.name.trim(),p_phone:v.phone.trim(),p_email:v.email.trim(),p_channel:'whatsapp',p_gest:!!v.gest,p_health:(v.hasHealth?v.health:'').trim()});
   PUB.sending=false;
   if(r.error){
     const m=r.error.message||'';book.err=m&&!/fetch|network/i.test(m)?m:'Não foi possível concluir agora. Confira a internet e tente de novo.';
     if(/ocupado|disponível|passou|expediente|almoço|atende/i.test(m)){book.step=2;book.time=null;try{await refreshBusy()}catch(e){}}
     renderBook();return;
   }
-  const d=r.data;book.done={id:d.id,code:d.code,date:d.date,time:d.time,svcId:d.svc,dur:d.dur,price:d.price,name:v.name.trim(),phone:v.phone.trim(),channel:v.channel};
+  const d=r.data;book.done={id:d.id,code:d.code,date:d.date,time:d.time,svcId:d.svc,dur:d.dur,price:d.price,name:v.name.trim(),phone:v.phone.trim(),channel:'whatsapp'};
   try{localStorage.setItem('caren-mine',JSON.stringify({phone:v.phone.trim(),code:d.code}))}catch(e){}
   try{await refreshBusy()}catch(e){}
   renderBook();renderNow();scrollTo({top:0});
@@ -1910,16 +1928,16 @@ const PAGES={inicio:'Caren Bragagnollo · Estética Facial em Guaíra',procedime
 function route(){
   const h=decodeURIComponent((location.hash||'#inicio').slice(1));
   if(/access_token|type=recovery|error_description/.test(h))return;
-  if(h==='painel'){S.session.role='caren';document.title='Painel · Caren Bragagnollo';renderAdmin();admEnter();return}
+  if(h==='painel'){document.body.classList.remove('in-flow');S.session.role='caren';document.title='Painel · Caren Bragagnollo';renderAdmin();admEnter();return}
   if(S.session.role==='caren'){S.session.role='cliente';A.dr=null;A.menu=false;renderAdmin()}
   const p=PAGES[h]?h:'inicio';
+  document.body.classList.toggle('in-flow',p==='agendar');$('#sheet').hidden=true;
   document.querySelectorAll('.page').forEach(e=>e.hidden=e.dataset.page!==p);
   document.querySelectorAll('[data-nav]').forEach(a=>{if(a.dataset.nav===p)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
   document.title=PAGES[p];
-  if(p==='agendar'&&PUB.ready)refreshBusy().then(()=>{if(!book.done)renderBook()},()=>{});
+  if(p==='agendar'){if(book.done&&!book.resched){}renderBook();if(PUB.ready)refreshBusy().then(()=>{if(!book.done)renderBook()},()=>{})}else $('#flowBar').hidden=true;
   if(p==='meus-horarios'&&PUB.mine&&!PUB.mineList)loadMine(PUB.mine.phone,PUB.mine.code).then(renderPortal);
   scrollTo({top:0});
-  const nav=document.querySelector('.nav [aria-current]');if(nav&&nav.scrollIntoView)nav.scrollIntoView({block:'nearest',inline:'center'});
 }
 function renderAll(){renderDyn();renderNow();renderServices();renderJourneys();renderHome();renderBook();renderPortal();if(S.session.role==='caren')renderAdmin()}
 addEventListener('hashchange',route);
